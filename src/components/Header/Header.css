@@ -1,0 +1,18 @@
+ul {
+    list-style-type: none;
+}
+
+li {
+    display: inline;
+    margin: 2%;
+}
+
+.nav-link {
+    background-color: white;
+    color: black;
+}
+
+.nav-link-active {
+    background-color: black;
+    color: white;
+}
