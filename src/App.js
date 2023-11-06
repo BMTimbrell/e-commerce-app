@@ -4,6 +4,8 @@ import Root from './components/Root/Root';
 import Home from './components/Home/Home';
 import Login from './components/Login/Login';
 import Products from './components/Products/Products';
+import Logout from './components/Login/Logout';
+
 function App() {
   return (
     <BrowserRouter>
@@ -12,6 +14,7 @@ function App() {
           <Route index element={ <Home/> }/>
           <Route path="register" element={ <Login /> }/>
           <Route path="login" element={ <Login /> }/>
+          <Route path="logout" element={ <Logout /> }/>
           <Route path="products" element={ <Products /> }/>
         </Route>
       </Routes>

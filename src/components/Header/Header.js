@@ -2,7 +2,7 @@ import React from 'react';
 import './Header.css';
 import { NavLink } from 'react-router-dom';
 
-function Header() {
+function Header({ updateUserId, userId }) {
     return (
         <header>
             <nav>
@@ -17,11 +17,23 @@ function Header() {
                             Products
                         </NavLink>
                     </li>
-                    <li key={"login"}>
-                        <NavLink to="/login"  className={ ({isActive}) => isActive ? 'nav-link nav-link-active' : 'nav-link' }>
-                            Login
-                        </NavLink>
-                    </li>
+                    {
+                        //don't show if logged in
+                        !userId &&
+                        <li key={"login"}>
+                            <NavLink to="/login"  className={ ({isActive}) => isActive ? 'nav-link nav-link-active' : 'nav-link' }>
+                                Login
+                            </NavLink>
+                        </li>
+                    }
+                    {
+                        userId &&
+                        <li key={"logout"}>
+                            <NavLink to="/logout"  className={ ({isActive}) => isActive ? 'nav-link nav-link-active' : 'nav-link' }>
+                                Logout
+                            </NavLink>
+                        </li>
+                    }
                 </ul>
             </nav>
         </header>
