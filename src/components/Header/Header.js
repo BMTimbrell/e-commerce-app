@@ -2,7 +2,7 @@ import React from 'react';
 import './Header.css';
 import { NavLink } from 'react-router-dom';
 
-function Header({ updateUserId, userId }) {
+function Header({ userId }) {
     return (
         <header>
             <nav>
