@@ -38,7 +38,7 @@ function Login() {
 
     return (
         <div>
-            login
+            Login
             <form onSubmit={ handleSubmit }>
                 <input type="email" onChange={ handleEmailChange }/>
                 <input type="password" onChange={ handlePasswordChange } />

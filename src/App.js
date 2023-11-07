@@ -6,6 +6,7 @@ import Login from './components/Login/Login';
 import Products from './components/Products/Products';
 import Logout from './components/Login/Logout';
 import Profile from './components/Profile/Profile';
+import Register from './components/Register/Register';
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={ <Root /> }>
           <Route index element={ <Home/> }/>
-          <Route path="register" element={ <Login /> }/>
+          <Route path="register" element={ <Register /> }/>
           <Route path="login" element={ <Login /> }/>
           <Route path="logout" element={ <Logout /> }/>
           <Route path="profile" element={ <Profile /> }/>
