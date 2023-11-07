@@ -28,6 +28,14 @@ function Header({ userId }) {
                     }
                     {
                         userId &&
+                        <li key={"profile"}>
+                             <NavLink to="/profile"  className={ ({isActive}) => isActive ? 'nav-link nav-link-active' : 'nav-link' }>
+                                Profile
+                            </NavLink>
+                        </li>
+                    }
+                    {
+                        userId &&
                         <li key={"logout"}>
                             <NavLink to="/logout"  className={ ({isActive}) => isActive ? 'nav-link nav-link-active' : 'nav-link' }>
                                 Logout

@@ -11,6 +11,7 @@ function Logout() {
             const result = await logoutUser();
             console.log(result);
             setUserId(null);
+            sessionStorage.removeItem('id');
             navigate('/login');
         }
         logout();

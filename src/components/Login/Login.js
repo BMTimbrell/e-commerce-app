@@ -18,6 +18,7 @@ function Login() {
         const result = await loginUser(email, password);
         console.log(result);
         if (result) {
+            sessionStorage.setItem('id', result.id);
             setUserId(result.id);
             setPassword('');
             setEmail('');
