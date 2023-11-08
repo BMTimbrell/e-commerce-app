@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { loginUser } from "../../api/api";
-import { useNavigate, useOutletContext } from 'react-router-dom';
+import { useNavigate, useOutletContext, Link } from 'react-router-dom';
 
 function Login() {
     const [email, setEmail] = useState('');
@@ -16,7 +16,6 @@ function Login() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const result = await loginUser(email, password);
-        console.log(result);
         if (result) {
             sessionStorage.setItem('id', result.id);
             setUserId(result.id);
@@ -38,13 +37,15 @@ function Login() {
 
     return (
         <div>
-            Login
+            <h2>Login</h2>
+            
             <form onSubmit={ handleSubmit }>
-                <input type="email" onChange={ handleEmailChange }/>
-                <input type="password" onChange={ handlePasswordChange } />
+                <input type="email" onChange={ handleEmailChange } placeholder="email" />
+                <input type="password" onChange={ handlePasswordChange } placeholder="password" />
                 <input type="submit" value="Login" />
             </form>
             <p>{error || ''}</p>
+            <p><Link to="/register">Click here</Link> to register.</p>
         </div>
     );
 }

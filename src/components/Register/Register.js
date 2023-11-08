@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { registerUser } from '../../api/api';
-import { useNavigate, useOutletContext } from 'react-router-dom';
+import { useNavigate, useOutletContext, Link } from 'react-router-dom';
 
 function Register() {
     const [userId, setUserId] = useOutletContext();
@@ -9,6 +9,10 @@ function Register() {
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
+    useEffect(() => {
+        if (userId) navigate('/');
+    }, [userId, navigate]);
 
     const handleFirstNameChange = e => {
         setFirstName(e.target.value);
@@ -38,7 +42,8 @@ function Register() {
 
     return (
         <div>
-             Register
+             <h2>Register</h2>
+             
             <form onSubmit={ handleSubmit }>
                 <input type="text" onChange={ handleFirstNameChange } placeholder="first name" />
                 <input type="text" onChange={ handleLastNameChange } placeholder="last name" />
@@ -46,6 +51,7 @@ function Register() {
                 <input type="password" onChange={ handlePasswordChange } placeholder="password" />
                 <input type="submit" value="Register" />
             </form>
+            <p>Already have an account? <Link to="/login">Click here</Link> to login.</p>
         </div>
     );
 }

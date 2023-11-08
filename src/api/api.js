@@ -1,6 +1,10 @@
+const baseUrl = 'http://localhost:3001';
+
+//Logging in and registering
+
 export const loginUser = async (email, password) => {
     try {
-        const response = await fetch('http://localhost:3001/login', {
+        const response = await fetch(`${baseUrl}/login`, {
             method: 'POST',
             credentials: "include",
             body: JSON.stringify({
@@ -23,7 +27,7 @@ export const loginUser = async (email, password) => {
 
 export const logoutUser = async () => {
     try {
-        const response = await fetch('http://localhost:3001/logout', {
+        const response = await fetch(`${baseUrl}/logout`, {
             headers: {
                 "Content-Type": "application/json"
             },
@@ -38,7 +42,7 @@ export const logoutUser = async () => {
 
 export const registerUser = async (firstName, lastName, email, password) => {
     try {
-        const response = await fetch('http://localhost:3001/register', {
+        const response = await fetch(`${baseUrl}/register`, {
             method: 'POST',
             credentials: "include",
             body: JSON.stringify({
@@ -63,7 +67,7 @@ export const registerUser = async (firstName, lastName, email, password) => {
 
 export const fetchUser = async (id) => {
     try {
-        const response = await fetch(`http://localhost:3001/users/${id}`, {
+        const response = await fetch(`${baseUrl}/users/${id}`, {
             credentials: "include",
             headers: {
                 "Content-Type": "application/json",
@@ -77,4 +81,25 @@ export const fetchUser = async (id) => {
     } catch (error) {
         console.log(error);
     }
+};
+
+//Products
+
+export const fetchProducts = async () => {
+    try {
+        const response = await fetch(`${baseUrl}/products`, {
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "Access-Control-Allow-Origin": "http://localhost:3000/"
+            }
+        });
+        const products = await response.json();
+        console.log(products);
+        return products;
+    } catch (error) {
+        console.log(error);
+    }
+    
 };
