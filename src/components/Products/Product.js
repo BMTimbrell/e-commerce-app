@@ -1,13 +1,16 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-function Product({name, manufacturer, category, price, gender, size, image}) {
+function Product({id, name, image}) {
     return (
         <div>
             {
                 name
             }
-            <img src={ image } />
-
+            <Link to={`${id}`}>
+                <img src={ image } alt="product" />
+            </Link>
+            
         </div>
     );
 }

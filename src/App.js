@@ -7,6 +7,7 @@ import Products from './components/Products/Products';
 import Logout from './components/Login/Logout';
 import Profile from './components/Profile/Profile';
 import Register from './components/Register/Register';
+import ProductDetails from './components/Products/ProductDetails';
 
 function App() {
   return (
@@ -18,7 +19,8 @@ function App() {
           <Route path="login" element={ <Login /> }/>
           <Route path="logout" element={ <Logout /> }/>
           <Route path="profile" element={ <Profile /> }/>
-          <Route path="products" element={ <Products /> }/>
+          <Route path="products" element={ <Products /> } />
+          <Route path="products/:id" element={ <ProductDetails /> }/>
         </Route>
       </Routes>
     </BrowserRouter>

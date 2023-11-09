@@ -40,6 +40,7 @@ function Products() {
                     product => (
                         <Product 
                             key={ product.id }
+                            id={ product.id }
                             name={ product.name }
                             manufacturer={ product.manufacturer }
                             category={ product.category }

@@ -1,27 +1,34 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { fetchProductById } from '../../api/api';
 
 function ProductDetails() {
-    /*useEffect(() => {
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState(false);
+    const [product, setProduct] = useState(null);
+    const { id } = useParams();
+
+    useEffect(() => {
         setIsLoading(true);
 
-        async function getProducts() {
-            const result = await fetchProducts();
+        async function getProduct() {
+            const result = await fetchProductById(id);
             if (result) {
-                const uniqueProducts = [];
-                result.forEach(product => {
-                    //check if array already has item with same image
-                    if (uniqueProducts.filter( el => el.image === product.image).length === 0) {
-                        const temp = product.size;
-                        product.size = [];
-                        product.size.push(temp);
-                        uniqueProducts.push(product);
+                const unique = [];
+                result.forEach(p => {
+                    //check if array already has item with same product id
+                    if (unique.filter( el => el.id === p.id).length === 0) {
+                        const temp = p.size;
+                        p.size = [];
+                        p.size.push(temp);
+                        unique.push(p);
                     } else {
-                        uniqueProducts.forEach(el => {
-                            if (el.image === product.image) el.size.push(product.size);
+                        unique.forEach(el => {
+                            if (el.id === p.id) el.size.push(p.size);
                         });
                     }
                 });
-                setProducts(uniqueProducts);
+                setProduct(unique[0]);
                 setIsLoading(false);
                 setError(false);
             } else {
@@ -30,6 +37,28 @@ function ProductDetails() {
             }    
         }
 
-        getProducts();      
-    }, [setIsLoading, setError, setProducts]);*/
+        getProduct();      
+    }, [setIsLoading, setError, setProduct, id]);
+
+    if (!isLoading && !error) {
+        return (
+            <div>
+                <p>{ product.name }</p>
+                <label htmlFor="size">Size:</label>
+                <select name="size">
+                {
+                    product.size.map(el => (
+                           <option key={ el } value={ el }>{ el }</option>
+                        )   
+                    )
+                }
+                </select>
+            </div>
+        );
+    }
+
+    if (isLoading) return <p>Loading...</p>;
+    return <p>Failed to load product!</p>;
 }
+
+export default ProductDetails;

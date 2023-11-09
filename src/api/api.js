@@ -76,7 +76,6 @@ export const fetchUser = async (id) => {
             }
         });
         const user = await response.json();
-        console.log(user);
         return user;
     } catch (error) {
         console.log(error);
@@ -96,7 +95,24 @@ export const fetchProducts = async () => {
             }
         });
         const products = await response.json();
-        console.log(products);
+        return products;
+    } catch (error) {
+        console.log(error);
+    }
+    
+};
+
+export const fetchProductById = async (id) => {
+    try {
+        const response = await fetch(`${baseUrl}/products/${id}`, {
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "Access-Control-Allow-Origin": "http://localhost:3000/"
+            }
+        });
+        const products = await response.json();
         return products;
     } catch (error) {
         console.log(error);
