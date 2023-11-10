@@ -30,10 +30,10 @@ function Products() {
         <div>
             <h2>Products</h2>
             {
-                isLoading && 'Loading'
+                isLoading && 'Loading...'
             }
             {
-                error && 'Failed to load products'
+                error && 'Failed to load products!'
             }
             {
                 !isLoading && !error && products.map(

@@ -119,3 +119,68 @@ export const fetchProductById = async (id) => {
     }
     
 };
+
+export const fetchCart = async () => {
+    try {
+        const response = await fetch(`${baseUrl}/cart`, {
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "Access-Control-Allow-Origin": "http://localhost:3000/"
+            }
+        });
+
+        if (response.status === 401) return response.status;
+
+        if (response.ok) {
+            const cart = await response.json();
+            return cart;
+        }
+        return null;
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+export const createCart = async (products) => {
+    try {
+        const response = await fetch(`${baseUrl}/cart`, {
+            method: "POST",
+            credentials: "include",
+            body: JSON.stringify(products),
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "Access-Control-Allow-Origin": "http://localhost:3000/"
+            }
+        });
+        const cart = await response.json();
+        return cart;
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+export const addItemToCart = async (id, price, size) => {
+    try {
+        const response = await fetch(`${baseUrl}/cart`, {
+            method: "PUT",
+            credentials: "include",
+            body: JSON.stringify({
+                id,
+                price,
+                size
+            }),
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "Access-Control-Allow-Origin": "http://localhost:3000/"
+            }
+        });
+        const cart = await response.json();
+        return cart;
+    } catch (error) {
+        console.log(error);
+    }
+};
