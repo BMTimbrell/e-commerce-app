@@ -57,7 +57,13 @@ function ProductDetails() {
         if (await fetchCart() === 401) navigate('/login');
         //If cart already exists add item
         if (await fetchCart()) {
-            const result = await addItemToCart(product.id, Number(product.price), size);
+            const result = await addItemToCart(
+                product.id, 
+                Number(product.price), 
+                size, 
+                product.name, 
+                product.image
+            );
             console.log(result);
             
         } else {
@@ -66,7 +72,9 @@ function ProductDetails() {
                     id: product.id,
                     price: Number(product.price),
                     quantity: 1,
-                    size: size
+                    size,
+                    name: product.name,
+                    image: product.image
                 }]
             };
             const result = await createCart(cartItems);

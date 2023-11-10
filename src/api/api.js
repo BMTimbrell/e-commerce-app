@@ -162,7 +162,7 @@ export const createCart = async (products) => {
     }
 };
 
-export const addItemToCart = async (id, price, size) => {
+export const addItemToCart = async (id, price, size, name, image) => {
     try {
         const response = await fetch(`${baseUrl}/cart`, {
             method: "PUT",
@@ -170,7 +170,9 @@ export const addItemToCart = async (id, price, size) => {
             body: JSON.stringify({
                 id,
                 price,
-                size
+                size,
+                name,
+                image
             }),
             headers: {
                 "Content-Type": "application/json",

@@ -19,7 +19,7 @@ function Profile() {
             } 
             getUser();
         } else {
-            navigate('/logout');
+            navigate('/login');
         }
     }, [navigate]);
 
