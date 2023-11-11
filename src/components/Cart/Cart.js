@@ -96,7 +96,7 @@ function Cart() {
                     ))
                 }
                 {
-                    cart && cart.totalCost
+                    cart && cart.totalCost.length > 0
                 }
                 <input type="submit" name="save" value="Save Changes" />
                 <input type="submit" name="checkout" value="Checkout" />

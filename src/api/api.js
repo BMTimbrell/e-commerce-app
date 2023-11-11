@@ -84,9 +84,14 @@ export const fetchUser = async (id) => {
 
 //Products
 
-export const fetchProducts = async () => {
+export const fetchProducts = async (category) => {
+    let url = `${baseUrl}/products`;
+    if (category) {
+        url = `${baseUrl}/products?category=${category}`;
+    }
+
     try {
-        const response = await fetch(`${baseUrl}/products`, {
+        const response = await fetch(url, {
             credentials: "include",
             headers: {
                 "Content-Type": "application/json",
@@ -127,6 +132,26 @@ export const fetchProductById = async (id) => {
     }
     
 };
+
+export const fetchCategories = async () => {
+    try {
+        const response = await fetch(`${baseUrl}/products/categories`, {
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "Access-Control-Allow-Origin": "http://localhost:3000/"
+            }
+        });
+
+        const categories = await response.json();
+        return categories;
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+//Cart
 
 export const fetchCart = async () => {
     try {

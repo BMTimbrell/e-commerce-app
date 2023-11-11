@@ -36,7 +36,6 @@ function ProductDetails() {
                 setIsLoading(false);
                 setError(false);
             } else {
-                console.log(result);
                 setError(true);
                 setIsLoading(false);
             }    
