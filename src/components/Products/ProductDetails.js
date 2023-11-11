@@ -16,6 +16,7 @@ function ProductDetails() {
 
         async function getProduct() {
             const result = await fetchProductById(id);
+            
             if (result) {
                 const unique = [];
                 result.forEach(p => {
@@ -35,6 +36,7 @@ function ProductDetails() {
                 setIsLoading(false);
                 setError(false);
             } else {
+                console.log(result);
                 setError(true);
                 setIsLoading(false);
             }    

@@ -94,8 +94,12 @@ export const fetchProducts = async () => {
                 "Access-Control-Allow-Origin": "http://localhost:3000/"
             }
         });
-        const products = await response.json();
-        return products;
+
+        if (response.ok) {
+            const products = await response.json();
+            return products;
+        }
+        return null;
     } catch (error) {
         console.log(error);
     }
@@ -112,8 +116,12 @@ export const fetchProductById = async (id) => {
                 "Access-Control-Allow-Origin": "http://localhost:3000/"
             }
         });
-        const products = await response.json();
-        return products;
+
+        if (response.ok) {
+            const products = await response.json();
+            return products;
+        }
+        return null;
     } catch (error) {
         console.log(error);
     }
