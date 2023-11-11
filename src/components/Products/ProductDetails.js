@@ -43,7 +43,7 @@ function ProductDetails() {
         getProduct();      
     }, [setIsLoading, setError, setProduct, id]);
 
-    const handleSizeChange = e => {
+    const handleChange = e => {
         setSize(e.target.value);
     };
 
@@ -89,7 +89,7 @@ function ProductDetails() {
                 <img src={ product.image } alt="product" />
                 <form onSubmit={ handleSubmit }>
                     <label htmlFor="size">Size:</label>
-                    <select name="size" id="size" onChange={ handleSizeChange } defaultValue={ "default" }>
+                    <select name="size" id="size" onChange={ handleChange } defaultValue={ "default" }>
                         <option key="default" value="default" disabled hidden>Select a size</option>
                         {
                             product.size.map(el => (
