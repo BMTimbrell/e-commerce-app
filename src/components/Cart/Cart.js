@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { fetchUser, fetchCart } from '../../api/api';
+import { fetchUser, fetchCart, createCart } from '../../api/api';
 import CartItem from './CartItem';
 
 function Cart() {
@@ -67,11 +67,14 @@ function Cart() {
         });
     };
 
-    const handleSubmit = (e, submitter) => {
+    const handleSubmit = async (e, submitter) => {
         e.preventDefault();
         
-        if (submitter === "save") console.log("save");
-        if (submitter === "checkout") console.log("checkout");
+        if (submitter === "save") await createCart({ products: cart.products });
+        if (submitter === "checkout") {
+            await createCart({ products: cart.products });
+            navigate('/checkout');
+        }
     };
 
     return (
