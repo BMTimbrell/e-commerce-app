@@ -84,11 +84,17 @@ export const fetchUser = async (id) => {
 
 //Products
 
-export const fetchProducts = async (category) => {
+export const fetchProducts = async (category, gender) => {
     let url = `${baseUrl}/products`;
-    if (category) {
+    if (gender === "Both") gender = null;
+    if (category && gender) {
+        url = `${baseUrl}/products?category=${category}&gender=${gender}`;
+    } else if (category) {
         url = `${baseUrl}/products?category=${category}`;
+    } else if (gender) {
+        url = `${baseUrl}/products?gender=${gender}`;
     }
+
 
     try {
         const response = await fetch(url, {
