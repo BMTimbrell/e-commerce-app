@@ -77,9 +77,10 @@ function Cart() {
         }
     };
 
-    return (
-        <div>
-            <form onSubmit={ e => handleSubmit(e, e.nativeEvent.submitter.name) }>
+    const renderCart = () => {
+        if (cart && cart.products.length) 
+            return (
+            <>
                 {
                     cart && cart.products.map(product => (
                         <CartItem
@@ -95,11 +96,24 @@ function Cart() {
                         />
                     ))
                 }
+                <p>Total Cost: { cart.totalCost }</p>
+            </>
+            );
+        
+    };
+
+    return (
+        <div>
+            <form onSubmit={ e => handleSubmit(e, e.nativeEvent.submitter.name) }>
                 {
-                    cart && cart.totalCost.length > 0
+                    renderCart()
+                }
+
+                {
+                    (!cart || !cart.products.length) && <p>Cart is empty.</p>
                 }
                 <input type="submit" name="save" value="Save Changes" />
-                <input type="submit" name="checkout" value="Checkout" />
+                { cart && <input type="submit" name="checkout" value="Checkout" /> }
             </form>
         </div>
     );

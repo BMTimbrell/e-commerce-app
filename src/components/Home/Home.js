@@ -5,9 +5,6 @@ function Home() {
     return (
         <div>
             <p>Home</p>
-            {
-                document.cookie
-            }
         </div>
     );
 }

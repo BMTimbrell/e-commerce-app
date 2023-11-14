@@ -219,8 +219,37 @@ export const addItemToCart = async (id, price, size, name, image) => {
                 "Access-Control-Allow-Origin": "http://localhost:3000/"
             }
         });
-        const cart = await response.json();
+
+        if (response.ok) {
+            const cart = await response.json();
         return cart;
+        }
+        return null;
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+export const makePayment = async (id, amount) => {
+    try {
+        const response = await fetch(`${baseUrl}/checkout`, {
+            method: "POST",
+            credentials: "include",
+            body: JSON.stringify({
+                id,
+                amount
+            }),
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "Access-Control-Allow-Origin": "http://localhost:3000/",
+            }
+        });
+
+        if (response.ok) {
+            return response.json();
+        }
+        return null;
     } catch (error) {
         console.log(error);
     }
