@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function Product({id, name, image, price, size, quantity}) {
+function Product({ id, name, image, price, size, quantity }) {
     const renderSizeAndQuantity = () => {
         if (size && quantity) {
             return (

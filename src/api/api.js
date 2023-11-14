@@ -254,3 +254,25 @@ export const makePayment = async (id, amount) => {
         console.log(error);
     }
 };
+
+//Orders
+
+export const fetchOrders = async () => {
+    try {
+        const response = await fetch(`${baseUrl}/orders`, {
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "Access-Control-Allow-Origin": "http://localhost:3000/",
+            }
+        });
+
+        if (response.ok) {
+            return response.json();
+        }
+        return null;
+    } catch (error) {
+        console.log(error);
+    }
+};
