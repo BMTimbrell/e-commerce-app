@@ -8,6 +8,7 @@ function Login() {
     const [userId, setUserId] = useOutletContext();
     const navigate = useNavigate();
     const [error, setError] = useState('');
+    const [isPending, setIsPending] = useState(false);
 
     useEffect(() => {
         if (userId) navigate('/');
@@ -15,15 +16,18 @@ function Login() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setIsPending(true);
         const result = await loginUser(email, password);
         if (result) {
             sessionStorage.setItem('id', result.id);
             setUserId(result.id);
             setPassword('');
             setEmail('');
+            setIsPending(false);
             navigate('/');
         } else {
             setError('Email or password is incorrect!');
+            setIsPending(false);
         }  
     };
 
@@ -42,7 +46,7 @@ function Login() {
             <form onSubmit={ handleSubmit }>
                 <input type="email" onChange={ handleEmailChange } placeholder="email" />
                 <input type="password" onChange={ handlePasswordChange } placeholder="password" />
-                <input type="submit" value="Login" />
+                <input disabled={ isPending } type="submit" value="Login" />
             </form>
             <p>{error || ''}</p>
             <p><Link to="/register">Click here</Link> to register.</p>

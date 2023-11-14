@@ -18,8 +18,11 @@ export const loginUser = async (email, password) => {
             }
         });
 
-        const jsonResponse = await response.json();
-        return jsonResponse;
+        if (response.ok) {
+            const jsonResponse = await response.json();
+            return jsonResponse;
+        }
+        return null;
     } catch (error) {
         console.log(error);
     }
@@ -75,6 +78,7 @@ export const fetchUser = async (id) => {
                 "Access-Control-Allow-Origin": "http://localhost:3000/"
             }
         });
+        
         const user = await response.json();
         return user;
     } catch (error) {

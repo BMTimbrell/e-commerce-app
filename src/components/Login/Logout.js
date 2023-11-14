@@ -19,8 +19,9 @@ function Logout() {
     
 
     return (
-        <>
-        </>
+        <p>
+            Logging out...
+        </p>
     );
 }
 

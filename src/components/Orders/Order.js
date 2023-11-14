@@ -6,15 +6,16 @@ function Order({ order }) {
         <div style={{ border: '1px solid black' }}>
             {
                 order.map(item => (
-                    <div key={ item.id + item.image + item.size }>
-                        <p>{ item.name }</p>
-                        <p>{ item.id }</p>
-                        <Link to={`${item.id}`}>
-                            <img src={ item.image } alt="product" />
+    
+                        <Link key={ item.id + item.image + item.size } to={`order-details?id=${item.id}`}>
+                            <div>
+                                <p>Total: £{ item.total_cost }</p>
+                                <p>{ item.name }</p>
+                                <img src={ item.image } alt="product" />
+                                <p>Quantity: { item.quantity }</p>
+                                <p>Price: £{ item.price }</p>
+                            </div>
                         </Link>
-                        
-                        <p>Price: £{ item.price }</p>
-                    </div>
                 ))
             }
             
