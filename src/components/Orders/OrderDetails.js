@@ -1,22 +1,36 @@
-import React, { useEffect } from 'react';
-import { Link, useOutletContext, useLocation } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useParams, useNavigate } from 'react-router-dom';
+import { fetchUser, fetchOrderById } from '../../api/api';
 
 function OrderDetails() {
-    const [order] = useOutletContext();
-    const { pathname } = useLocation();
+    const [order, setOrder] = useState([]);
+    const { id } = useParams();
+    const navigate = useNavigate();
 
-    // Automatically scrolls to top whenever pathname changes
+    //Check user is logged in, and if so, fetch order
     useEffect(() => {
-        window.scrollTo(0, 0);
-    }, [pathname]);
+        if (sessionStorage.getItem('id')) {
+            async function getUser() {
+                const result = await fetchUser(sessionStorage.getItem('id'));
+                if (result) {
+                    setOrder(await fetchOrderById(id));
+                } else {
+                    navigate('/logout');
+                }   
+            } 
 
-    if (order)
+            getUser();
+        } else {
+            navigate('/login');
+        }
+    }, [navigate, id]);
+
+    if (order && order.length)
         return (
             <div>
                 <h2>Order Details</h2>
                 {
                     order.map((item, index) => (
-        
                             <Link key={ index } to={`/products/${item.shoe_id}`}>
                                 <div>
                                     <p>{ item.name }</p>

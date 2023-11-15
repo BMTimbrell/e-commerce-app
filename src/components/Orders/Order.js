@@ -7,7 +7,7 @@ function Order({ order }) {
             {
                 order.map((item, index) => (
     
-                        <Link key={ index } to={`order-details?id=${item.id}`}>
+                        <Link key={ index } to={`${item.id}`}>
                             <div>
                                 <p>{ item.name }</p>
                                 <img src={ item.image } alt="product" />

@@ -1,29 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { fetchUser, fetchOrders } from '../../api/api';
-import { useNavigate, useSearchParams, Outlet, useLocation } from 'react-router-dom';
-import Orders from '../Orders/Orders';
+import { fetchUser } from '../../api/api';
+import { useNavigate, Link } from 'react-router-dom';
 
 function Profile() {
     const [name, setName] = useState('');
-    const [orders, setOrders] = useState([]);
-    const [searchParams] = useSearchParams();
     const navigate = useNavigate();
-    const { pathname } = useLocation();
-
-    const formatOrders = (arr) => {
-        let newOrders = [];
-        let checkUniqueId = -1;
-        //Make array of items for each order
-        for (const el of arr) {
-            newOrders.push(arr.filter(order => 
-                el.id === order.id && el.id !== checkUniqueId
-            ));
-            if (checkUniqueId !== el.id) checkUniqueId = el.id;
-        }
-
-        newOrders = newOrders.filter(order => order.length > 0);
-        setOrders(newOrders);
-    };
 
     //Check user is logged in
     useEffect(() => {
@@ -36,26 +17,12 @@ function Profile() {
                     navigate('/logout');
                 }   
             } 
-            async function getOrders() {
-                const result = await fetchOrders();
-                formatOrders(result);
-            }
 
             getUser();
-            getOrders();
         } else {
             navigate('/login');
         }
     }, [navigate]);
-
-    if (pathname === '/profile/order-details') {
-        const order = orders.filter(order => order[0].id === Number(searchParams.get('id')));
-        return (
-            <>
-                <Outlet context={ [order[0]] } />
-            </>
-        );
-    }
 
     return (
         <div>
@@ -63,9 +30,8 @@ function Profile() {
            {
                 name
            }
-           {
-            <Orders orders={ orders } />
-           } 
+           <h3>Orders</h3>
+           <p><Link to="orders">Click here</Link> to view your past orders.</p>
         </div>
     );
 }

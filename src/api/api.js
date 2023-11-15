@@ -284,3 +284,23 @@ export const fetchOrders = async () => {
         console.log(error);
     }
 };
+
+export const fetchOrderById = async id => {
+    try {
+        const response = await fetch(`${baseUrl}/orders/${id}`, {
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "Access-Control-Allow-Origin": "http://localhost:3000/",
+            }
+        });
+
+        if (response.ok) {
+            return response.json();
+        }
+        return null;
+    } catch (error) {
+        console.log(error);
+    }
+};
