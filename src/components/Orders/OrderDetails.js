@@ -42,6 +42,7 @@ function OrderDetails() {
                     ))
                 }
                 <p>Total: £{ order[0].total_cost }</p>
+                <p>Ordered on: { order[0].order_date }</p>
             </div>
         );
     

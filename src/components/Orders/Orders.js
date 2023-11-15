@@ -43,7 +43,7 @@ function Orders() {
     const renderOrders = () => {
         return (
             <>
-            <h3>Your Orders</h3>
+            <h2>Your Orders</h2>
             {
                 !orders.length && <p>You haven't made any orders yet</p>
             }

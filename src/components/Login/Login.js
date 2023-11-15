@@ -52,8 +52,20 @@ function Login() {
             <h2>Login</h2>
             
             <form onSubmit={ handleSubmit }>
-                <input type="email" name="email" onChange={ handleChange } placeholder="email" />
-                <input type="password" name="password" onChange={ handleChange } placeholder="password" />
+                <input 
+                    required
+                    type="email" 
+                    name="email" 
+                    onChange={ handleChange } 
+                    placeholder="email" 
+                />
+                <input
+                    required
+                    type="password" 
+                    name="password" 
+                    onChange={ handleChange } 
+                    placeholder="password" 
+                />
                 <input disabled={ isPending } type="submit" value="Login" />
             </form>
             <p>{error || ''}</p>

@@ -40,7 +40,7 @@ function Header({ userId }) {
                         userId &&
                         <li key={"cart"}>
                             <NavLink to="/cart"  className={ ({isActive}) => isActive ? 'nav-link nav-link-active' : 'nav-link' }>
-                                <img src={ cart } alt="cart" />
+                                <img src={ cart } alt="cart" style={ {width: '2rem'} } />
                             </NavLink>
                         </li>
                     }

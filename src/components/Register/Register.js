@@ -71,11 +71,39 @@ function Register() {
              <h2>Register</h2>
              
             <form onSubmit={ handleSubmit }>
-                <input name="firstName" type="text" onChange={ handleChange } placeholder="first name" />
-                <input name="lastName" type="text" onChange={ handleChange } placeholder="last name" />
-                <input name="email" type="email" onChange={ handleChange } placeholder="email" />
-                <input name="password" type="password" onChange={ handleChange } placeholder="password" />
-                <input disabled={ isPending } type="submit" value="Register" />
+                <input 
+                    required
+                    name="firstName" 
+                    type="text" 
+                    onChange={ handleChange } 
+                    placeholder="first name" 
+                />
+                <input 
+                    required
+                    name="lastName" 
+                    type="text" 
+                    onChange={ handleChange } 
+                    placeholder="last name" 
+                />
+                <input
+                    required
+                    name="email" 
+                    type="email" 
+                    onChange={ handleChange } 
+                    placeholder="email" 
+                />
+                <input 
+                    required
+                    name="password" 
+                    type="password" 
+                    onChange={ handleChange } 
+                    placeholder="password" 
+                />
+                <input 
+                    disabled={ isPending } 
+                    type="submit" 
+                    value="Register" 
+                />
             </form>
             {
                 error && <p>Invalid user credentials</p>

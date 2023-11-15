@@ -71,7 +71,9 @@ export const registerUser = async (firstName, lastName, email, password) => {
     }
 };
 
-export const fetchUser = async (id) => {
+// Fetching and updating user
+
+export const fetchUser = async id => {
     try {
         const response = await fetch(`${baseUrl}/users/${id}`, {
             credentials: "include",
@@ -84,6 +86,28 @@ export const fetchUser = async (id) => {
         
         const user = await response.json();
         return user;
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+export const updateUser = async (id, data) => {
+    try {
+        const response = await fetch(`${baseUrl}/users/${id}`, {
+            method: "PUT",
+            credentials: "include",
+            body: JSON.stringify({
+                [data.type]: data.value
+            }),
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "Access-Control-Allow-Origin": "http://localhost:3000/"
+            }
+        });
+        
+        if (response.ok) return response;
+        return null;
     } catch (error) {
         console.log(error);
     }
