@@ -6,9 +6,9 @@ function Orders({ orders }) {
         return (
             <>
             {
-                orders.map(order => (
+                orders.map((order, index) => (
                     <Order
-                        key={ order[0].id + order[0].image + order[0].size}
+                        key={ index }
                         order={ order }
                     />
                 ))

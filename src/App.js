@@ -10,6 +10,7 @@ import Register from './components/Register/Register';
 import ProductDetails from './components/Products/ProductDetails';
 import Cart from './components/Cart/Cart';
 import Checkout from './components/Checkout/Checkout';
+import OrderDetails from './components/Orders/OrderDetails';
 
 function App() {
   return (
@@ -20,7 +21,9 @@ function App() {
           <Route path="register" element={ <Register /> }/>
           <Route path="login" element={ <Login /> }/>
           <Route path="logout" element={ <Logout /> }/>
-          <Route path="profile" element={ <Profile /> }/>
+          <Route path="profile" element={ <Profile /> }>
+            <Route path="order-details" element={ <OrderDetails /> } />
+          </Route>
           <Route path="products" element={ <Products /> } />
           <Route path="products/:id" element={ <ProductDetails /> }/>
           <Route path="cart" element={ <Cart /> } />

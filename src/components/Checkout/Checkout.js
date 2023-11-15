@@ -54,9 +54,9 @@ function Checkout() {
     return (
         <div>
             {
-                 cart && cart.products.map(product => (
+                 cart && cart.products.map((product, index) => (
                     <Product
-                        key={ product.image + product.size}
+                        key={ index }
                         id={ product.id } 
                         name={ product.name } 
                         image={ product.image } 

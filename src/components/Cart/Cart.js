@@ -82,9 +82,9 @@ function Cart() {
             return (
             <>
                 {
-                    cart && cart.products.map(product => (
+                    cart && cart.products.map((product, index) => (
                         <CartItem
-                            key={ product.image + product.size}
+                            key={ index }
                             id={ product.id } 
                             name={ product.name } 
                             image={ product.image } 

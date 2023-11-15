@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { fetchUser, fetchOrders } from '../../api/api';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams, Outlet, useLocation } from 'react-router-dom';
 import Orders from '../Orders/Orders';
 
 function Profile() {
     const [name, setName] = useState('');
-    const [orders, setOrders] = useState(null);
+    const [orders, setOrders] = useState([]);
+    const [searchParams] = useSearchParams();
     const navigate = useNavigate();
+    const { pathname } = useLocation();
 
     const formatOrders = (arr) => {
         let newOrders = [];
@@ -18,8 +20,8 @@ function Profile() {
             ));
             if (checkUniqueId !== el.id) checkUniqueId = el.id;
         }
+
         newOrders = newOrders.filter(order => order.length > 0);
-        console.log(newOrders);
         setOrders(newOrders);
     };
 
@@ -45,6 +47,15 @@ function Profile() {
             navigate('/login');
         }
     }, [navigate]);
+
+    if (pathname === '/profile/order-details') {
+        const order = orders.filter(order => order[0].id === Number(searchParams.get('id')));
+        return (
+            <>
+                <Outlet context={ [order[0]] } />
+            </>
+        );
+    }
 
     return (
         <div>
