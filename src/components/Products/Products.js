@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { fetchProducts, fetchCategories } from '../../api/api';
 import Product from './Product';
+import { useSearchParams } from 'react-router-dom';
 
 function Products() {
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(false);
     const [products, setProducts] = useState(null);
     const [categories, setCategories] = useState(null);
-    const [category, setCategory] = useState(null);
-    const [gender, setGender] = useState(null);
+    const [searchParams, setSearchParams] = useSearchParams();
+    const category = searchParams.get('category');
+    const gender = searchParams.get('gender');
 
     useEffect(() => {
         setIsLoading(true);
@@ -35,26 +37,26 @@ function Products() {
     }, [setIsLoading, setError, setProducts, category, gender]);
 
     const handleCategoryChange = e => {
-        if (e.target.value === 'all') {
-            setCategory(null);
-            return;
-        }
-        setCategory(e.target.value);
+        searchParams.set('category', e.target.value);
+        setSearchParams(searchParams);
     };
 
     const handleGenderChange = e => {
         //Check if box is checked or unchecked and change value accordingly
+        let param = '';
         if (!e.target.checked) {
             if (gender === "Both") {
-                if (e.target.value === "Men") setGender("Women");
-                if (e.target.value === "Women") setGender("Men");
+                if (e.target.value === "Men") param = "Women";
+                if (e.target.value === "Women") param = "Men";
             } else {
-                setGender(null);
+                param = 'Both'
             }
         } else {
-            if (gender) setGender("Both");
-            else setGender(e.target.value);
+            if (gender) param = "Both";
+            else param = e.target.value;
         }
+        searchParams.set('gender', param);
+        setSearchParams(searchParams);
     };
 
     return (

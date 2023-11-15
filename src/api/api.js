@@ -91,6 +91,7 @@ export const fetchUser = async (id) => {
 export const fetchProducts = async (category, gender) => {
     let url = `${baseUrl}/products`;
     if (gender === "Both") gender = null;
+    if (category === 'all') category = null;
     if (category && gender) {
         url = `${baseUrl}/products?category=${category}&gender=${gender}`;
     } else if (category) {
