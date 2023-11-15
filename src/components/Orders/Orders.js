@@ -5,6 +5,10 @@ function Orders({ orders }) {
     const renderOrders = () => {
         return (
             <>
+            <h3>Your Orders</h3>
+            {
+                !orders.length && <p>You haven't made any orders yet</p>
+            }
             {
                 orders.map((order, index) => (
                     <Order

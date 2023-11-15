@@ -6,6 +6,7 @@ function Register() {
     const [userId, setUserId] = useOutletContext();
     const navigate = useNavigate();
     const [isPending, setIsPending] = useState(false);
+    const [error, setError] = useState(false);
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
@@ -60,6 +61,8 @@ function Register() {
             setUserId(result.id);
             navigate('/'); 
         }
+
+        setError(true);
         setIsPending(false);
     };
 
@@ -68,12 +71,15 @@ function Register() {
              <h2>Register</h2>
              
             <form onSubmit={ handleSubmit }>
-                <input type="text" onChange={ handleChange } placeholder="first name" />
-                <input type="text" onChange={ handleChange } placeholder="last name" />
-                <input type="email" onChange={ handleChange } placeholder="email" />
-                <input type="password" onChange={ handleChange } placeholder="password" />
+                <input name="firstName" type="text" onChange={ handleChange } placeholder="first name" />
+                <input name="lastName" type="text" onChange={ handleChange } placeholder="last name" />
+                <input name="email" type="email" onChange={ handleChange } placeholder="email" />
+                <input name="password" type="password" onChange={ handleChange } placeholder="password" />
                 <input disabled={ isPending } type="submit" value="Register" />
             </form>
+            {
+                error && <p>Invalid user credentials</p>
+            }
             <p>Already have an account? <Link to="/login">Click here</Link> to login.</p>
         </div>
     );

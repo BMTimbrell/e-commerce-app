@@ -41,7 +41,7 @@ function Login() {
             setFormData(prev => (
                 {
                     ...prev,
-                    name: e.target.value
+                    password: e.target.value
                 }
             ));
         }

@@ -1,10 +1,12 @@
 import React from 'react';
 import './Header.css';
 import { NavLink } from 'react-router-dom';
+import cart from '../../images/cart.png';
 
 function Header({ userId }) {
     return (
         <header>
+            <h1>Splendid Shoes</h1>
             <nav>
                 <ul>
                     <li key={"home"}>
@@ -29,8 +31,16 @@ function Header({ userId }) {
                     {
                         userId &&
                         <li key={"profile"}>
-                             <NavLink to="/profile"  className={ ({isActive}) => isActive ? 'nav-link nav-link-active' : 'nav-link' }>
+                            <NavLink to="/profile"  className={ ({isActive}) => isActive ? 'nav-link nav-link-active' : 'nav-link' }>
                                 Profile
+                            </NavLink>
+                        </li>
+                    }
+                    {
+                        userId &&
+                        <li key={"cart"}>
+                            <NavLink to="/cart"  className={ ({isActive}) => isActive ? 'nav-link nav-link-active' : 'nav-link' }>
+                                <img src={ cart } alt="cart" />
                             </NavLink>
                         </li>
                     }

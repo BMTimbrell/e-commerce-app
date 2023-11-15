@@ -61,8 +61,11 @@ export const registerUser = async (firstName, lastName, email, password) => {
             }
         });
 
-        const jsonResponse = await response.json();
-        return jsonResponse;
+        if (response.ok) {
+            const jsonResponse = await response.json();
+            return jsonResponse;
+        }
+        return null;
     } catch (error) {
         console.log(error);
     }
