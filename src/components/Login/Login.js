@@ -3,8 +3,7 @@ import { loginUser } from "../../api/api";
 import { useNavigate, useOutletContext, Link } from 'react-router-dom';
 
 function Login() {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [formData, setFormData] = useState({ email: '', password: '' });
     const [userId, setUserId] = useOutletContext();
     const navigate = useNavigate();
     const [error, setError] = useState('');
@@ -17,12 +16,11 @@ function Login() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsPending(true);
-        const result = await loginUser(email, password);
+        const result = await loginUser(formData.email, formData.password);
         if (result) {
             sessionStorage.setItem('id', result.id);
             setUserId(result.id);
-            setPassword('');
-            setEmail('');
+            setFormData({ email: '', passowrd: '' });
             setIsPending(false);
             navigate('/');
         } else {
@@ -31,12 +29,22 @@ function Login() {
         }  
     };
 
-    const handleEmailChange = e => {
-        setEmail(e.target.value);
-    };
-
-    const handlePasswordChange = e => {
-        setPassword(e.target.value);
+    const handleChange = e => {
+        if (e.target.name === 'email') {
+            setFormData(prev => (
+                {
+                    ...prev,
+                    email: e.target.value
+                }
+            ));
+        } else {
+            setFormData(prev => (
+                {
+                    ...prev,
+                    name: e.target.value
+                }
+            ));
+        }
     };
 
     return (
@@ -44,8 +52,8 @@ function Login() {
             <h2>Login</h2>
             
             <form onSubmit={ handleSubmit }>
-                <input type="email" onChange={ handleEmailChange } placeholder="email" />
-                <input type="password" onChange={ handlePasswordChange } placeholder="password" />
+                <input type="email" name="email" onChange={ handleChange } placeholder="email" />
+                <input type="password" name="password" onChange={ handleChange } placeholder="password" />
                 <input disabled={ isPending } type="submit" value="Login" />
             </form>
             <p>{error || ''}</p>
