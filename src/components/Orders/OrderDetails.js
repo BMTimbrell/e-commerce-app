@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { fetchUser, fetchOrderById } from '../../api/api';
+import { formatDate } from '../../helper/helper';
+
 
 function OrderDetails() {
     const [order, setOrder] = useState([]);
@@ -42,7 +44,7 @@ function OrderDetails() {
                     ))
                 }
                 <p>Total: £{order[0].total_cost}</p>
-                <p>Ordered on: {order[0].order_date}</p>
+                <p>Ordered on: {formatDate(order[0].order_date)}</p>
             </div>
         );
     

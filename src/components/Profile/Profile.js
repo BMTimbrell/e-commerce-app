@@ -16,6 +16,8 @@ function Profile() {
     });
     const [isEditing, setIsEditing] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [error, setError] = useState(false);
+
     const navigate = useNavigate();
 
     //Check user is logged in
@@ -48,6 +50,12 @@ function Profile() {
             formData
         );
         setIsSubmitting(false);
+        
+        if (!result) {
+            setError(true);
+            return;
+        }
+
         setIsEditing(false);
     };
 
@@ -127,6 +135,7 @@ function Profile() {
                             value={isSubmitting ? 'Saving...' : 'Save Changes'}
                             disabled={isSubmitting}
                         />
+                        {error && <p>Submission failed!</p>}
                     </form>
                 )}
 

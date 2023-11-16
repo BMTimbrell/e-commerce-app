@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { formatDate } from '../../helper/helper';
 
 function Order({ order }) {
+
     return (
         <div style={{border: '1px solid black'}}>
             {
@@ -18,7 +20,7 @@ function Order({ order }) {
                 ))
             }
             <p>Total: £{order[0].total_cost}</p>
-            <p>Ordered on: {order[0].order_date}</p>
+            <p>Ordered on: {formatDate(order[0].order_date)}</p>
             
         </div>
     );
