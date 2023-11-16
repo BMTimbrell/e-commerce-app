@@ -38,7 +38,7 @@ function Profile() {
         } else {
             navigate('/login');
         }
-    }, [navigate]);
+    }, [navigate, isSubmitting]);
 
     const handleSubmit = async e => {
         e.preventDefault();
@@ -48,6 +48,7 @@ function Profile() {
             formData
         );
         setIsSubmitting(false);
+        setIsEditing(false);
     };
 
     const handleChange = e => {
