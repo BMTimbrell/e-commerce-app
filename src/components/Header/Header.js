@@ -10,47 +10,42 @@ function Header({ userId }) {
             <nav>
                 <ul>
                     <li key={"home"}>
-                        <NavLink to="/" className={ ({isActive}) => isActive ? 'nav-link nav-link-active' : 'nav-link' }>
+                        <NavLink to="/" className={({isActive}) => isActive ? 'nav-link nav-link-active' : 'nav-link'}>
                             Home
                         </NavLink>
                     </li>
                     <li key={"products"}>
-                        <NavLink to="/products"  className={ ({isActive}) => isActive ? 'nav-link nav-link-active' : 'nav-link' }>
+                        <NavLink to="/products"  className={({isActive}) => isActive ? 'nav-link nav-link-active' : 'nav-link'}>
                             Products
                         </NavLink>
                     </li>
-                    {
-                        //don't show if logged in
-                        !userId &&
+                    {!userId &&
                         <li key={"login"}>
-                            <NavLink to="/login"  className={ ({isActive}) => isActive ? 'nav-link nav-link-active' : 'nav-link' }>
+                            <NavLink to="/login"  className={({isActive}) => isActive ? 'nav-link nav-link-active' : 'nav-link'}>
                                 Login
                             </NavLink>
                         </li>
                     }
-                    {
-                        userId &&
-                        <li key={"profile"}>
-                            <NavLink to="/profile"  className={ ({isActive}) => isActive ? 'nav-link nav-link-active' : 'nav-link' }>
-                                Profile
-                            </NavLink>
-                        </li>
-                    }
-                    {
-                        userId &&
-                        <li key={"cart"}>
-                            <NavLink to="/cart"  className={ ({isActive}) => isActive ? 'nav-link nav-link-active' : 'nav-link' }>
-                                <img src={ cart } alt="cart" style={ {width: '2rem'} } />
-                            </NavLink>
-                        </li>
-                    }
-                    {
-                        userId &&
-                        <li key={"logout"}>
-                            <NavLink to="/logout"  className={ ({isActive}) => isActive ? 'nav-link nav-link-active' : 'nav-link' }>
-                                Logout
-                            </NavLink>
-                        </li>
+                    {userId &&
+                        (
+                            <>
+                                <li key={"profile"}>
+                                    <NavLink to="/profile"  className={({isActive}) => isActive ? 'nav-link nav-link-active' : 'nav-link'}>
+                                        Profile
+                                    </NavLink>
+                                </li>
+                                <li key={"cart"}>
+                                    <NavLink to="/cart"  className={({isActive}) => isActive ? 'nav-link nav-link-active' : 'nav-link'}>
+                                        <img src={cart} alt="cart" style={{width: '2rem'}} />
+                                    </NavLink>
+                                </li>
+                                <li key={"logout"}>
+                                    <NavLink to="/logout"  className={({isActive}) => isActive ? 'nav-link nav-link-active' : 'nav-link'}>
+                                        Logout
+                                    </NavLink>
+                                </li>
+                            </>
+                        )
                     }
                 </ul>
             </nav>

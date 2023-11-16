@@ -63,19 +63,36 @@ function Products() {
         <div>
             <h2>Products</h2>
             <label htmlFor="category">Category: </label>
-            <select name="category" id="category" onChange={ handleCategoryChange } defaultValue={ "default" }>
+            <select 
+                name="category" 
+                id="category" 
+                onChange={handleCategoryChange} 
+                defaultValue={"default"}
+            >
                 <option key="default" value="default" disabled hidden>Filter by category</option>
                 <option key="all" value="all">All</option>
                 {
                     categories && categories.map(el => (
-                        <option key={ el.category } value={ el.category }>{ el.category }</option>  
+                        <option key={el.category} value={el.category}>{el.category}</option>  
                     ))
                 }
             </select>
 
-            <input type="checkbox" id="men" name="men" value="Men" onChange={ handleGenderChange } />
+            <input 
+                type="checkbox" 
+                id="men" 
+                name="men" 
+                value="Men" 
+                onChange={handleGenderChange} 
+            />
             <label htmlFor="men">Men</label>
-            <input type="checkbox" id="women" name="women" value="Women" onChange={ handleGenderChange } />
+            <input 
+                type="checkbox" 
+                id="women" 
+                name="women" 
+                value="Women" 
+                onChange={handleGenderChange} 
+            />
             <label htmlFor="women">Women</label>
 
             {
@@ -88,14 +105,14 @@ function Products() {
                 !isLoading && !error && products.map(
                     product => (
                         <Product 
-                            key={ product.id }
-                            id={ product.id }
-                            name={ product.name }
-                            manufacturer={ product.manufacturer }
-                            category={ product.category }
-                            price={ product.price }
-                            gender={ product.gender }
-                            image={ product.image }
+                            key={product.id}
+                            id={product.id}
+                            name={product.name}
+                            manufacturer={product.manufacturer}
+                            category={product.category}
+                            price={product.price}
+                            gender={product.gender}
+                            image={product.image}
                         />
                     )
                 )

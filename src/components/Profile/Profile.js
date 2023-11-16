@@ -35,16 +35,16 @@ function Profile() {
 
     return (
         <div>
-            <h2>{ userData.firstName }'s Account</h2>
+            <h2>{userData.firstName}'s Account</h2>
             <h3>User Details</h3>
             <section>
-                <p>First name: { userData.firstName }</p>
-                <p>Last name: { userData.lastName }</p>
-                <p>Email: { userData.email }</p>
+                <p>First name: {userData.firstName}</p>
+                <p>Last name: {userData.lastName}</p>
+                <p>Email: {userData.email}</p>
                 <button onClick={() => {
                     setIsEditing(true);
                 }}>
-                    { isEditing ? 'Save Changes' : 'Edit Details' }
+                    {isEditing ? 'Save Changes' : 'Edit Details'}
                 </button>
             </section>
             <h3>Orders</h3>

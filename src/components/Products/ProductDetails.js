@@ -86,21 +86,21 @@ function ProductDetails() {
     if (!isLoading && !error) {
         return (
             <div>
-                <p>{ product.name }</p>
-                <img src={ product.image } alt="product" />
-                <form onSubmit={ handleSubmit }>
+                <p>{product.name}</p>
+                <img src={product.image} alt="product" />
+                <form onSubmit={handleSubmit}>
                     <label htmlFor="size">Size:</label>
-                    <select name="size" id="size" onChange={ handleChange } defaultValue={ "default" }>
+                    <select name="size" id="size" onChange={handleChange} defaultValue={"default"}>
                         <option key="default" value="default" disabled hidden>Select a size</option>
                         {
                             product.size.map(el => (
-                                <option key={ el } value={ el }>{ el }</option>  
+                                <option key={el} value={el}>{el}</option>  
                             ))
                         }
                     </select>
                     <input type="submit" value="Add to cart" />
                 </form>
-                <p>{ sizeError }</p>
+                <p>{sizeError}</p>
                 
             </div>
         );

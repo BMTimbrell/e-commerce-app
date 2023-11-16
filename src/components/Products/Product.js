@@ -6,8 +6,8 @@ function Product({ id, name, image, price, size, quantity }) {
         if (size && quantity) {
             return (
                 <>
-                    <p>Size: { size }</p>
-                    <p>Quantity: { quantity }</p>
+                    <p>Size: {size}</p>
+                    <p>Quantity: {quantity}</p>
                     <Link to="/cart">Edit</Link>
                 </>
                 
@@ -21,10 +21,10 @@ function Product({ id, name, image, price, size, quantity }) {
                 name
             }
             <Link to={`${id}`}>
-                <img src={ image } alt="product" />
+                <img src={image} alt="product" />
             </Link>
             
-            <p>Price: £{ price }</p>
+            <p>Price: £{price}</p>
             {
                renderSizeAndQuantity()
             }

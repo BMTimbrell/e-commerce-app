@@ -56,22 +56,22 @@ function Checkout() {
             {
                  cart && cart.products.map((product, index) => (
                     <Product
-                        key={ index }
-                        id={ product.id } 
-                        name={ product.name } 
-                        image={ product.image } 
-                        price={ product.price }
-                        quantity={ product.quantity }
-                        size={ product.size }
+                        key={index}
+                        id={product.id} 
+                        name={product.name} 
+                        image={product.image} 
+                        price={product.price}
+                        quantity={product.quantity}
+                        size={product.size}
                     />
                 ))
             }
 
-            <p>Total to pay: { cart.totalCost }</p>
+            <p>Total to pay: {cart.totalCost}</p>
            {
 
-                <Elements stripe={ stripePromise }>
-                    <PaymentForm amount={ cart.totalCost * 100 } updateSuccess={ updateSuccess }/>
+                <Elements stripe={stripePromise}>
+                    <PaymentForm amount={cart.totalCost * 100} updateSuccess={updateSuccess}/>
                 </Elements>
            }
            

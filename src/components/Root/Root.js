@@ -11,8 +11,8 @@ function Root() {
 
     return (
         <div>
-            <Header userId={ userId } />
-            <Outlet context={ [userId, setUserId] } />
+            <Header userId={userId} />
+            <Outlet context={[userId, setUserId]} />
         </div>
     );
 }

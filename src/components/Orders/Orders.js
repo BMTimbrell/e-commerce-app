@@ -50,8 +50,8 @@ function Orders() {
             {
                 orders.map((order, index) => (
                     <Order
-                        key={ index }
-                        order={ order }
+                        key={index}
+                        order={order}
                     />
                 ))
             }

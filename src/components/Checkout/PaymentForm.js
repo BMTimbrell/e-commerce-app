@@ -28,12 +28,12 @@ function PaymentForm({ amount, updateSuccess }) {
 
     return (
         <>
-            <form onSubmit={ handleSubmit }>
+            <form onSubmit={handleSubmit}>
             <fieldset>
                 <CardElement />
             </fieldset>
-            <button disabled={ isProcessing }>
-                { isProcessing ? 'Processing...' : 'Pay Now' }
+            <button disabled={isProcessing}>
+                {isProcessing ? 'Processing...' : 'Pay Now'}
             </button>
         </form>
         </>

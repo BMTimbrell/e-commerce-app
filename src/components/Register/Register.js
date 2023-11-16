@@ -70,37 +70,37 @@ function Register() {
         <div>
              <h2>Register</h2>
              
-            <form onSubmit={ handleSubmit }>
+            <form onSubmit={handleSubmit}>
                 <input 
                     required
                     name="firstName" 
                     type="text" 
-                    onChange={ handleChange } 
+                    onChange={handleChange} 
                     placeholder="first name" 
                 />
                 <input 
                     required
                     name="lastName" 
                     type="text" 
-                    onChange={ handleChange } 
+                    onChange={handleChange} 
                     placeholder="last name" 
                 />
                 <input
                     required
                     name="email" 
                     type="email" 
-                    onChange={ handleChange } 
+                    onChange={handleChange} 
                     placeholder="email" 
                 />
                 <input 
                     required
                     name="password" 
                     type="password" 
-                    onChange={ handleChange } 
+                    onChange={handleChange} 
                     placeholder="password" 
                 />
                 <input 
-                    disabled={ isPending } 
+                    disabled={isPending} 
                     type="submit" 
                     value="Register" 
                 />

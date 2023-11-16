@@ -70,9 +70,9 @@ function Cart() {
     const handleSubmit = async (e, submitter) => {
         e.preventDefault();
         
-        if (submitter === "save") await createCart({ products: cart.products });
+        if (submitter === "save") await createCart({products: cart.products});
         if (submitter === "checkout") {
-            await createCart({ products: cart.products });
+            await createCart({products: cart.products});
             navigate('/checkout');
         }
     };
@@ -84,19 +84,19 @@ function Cart() {
                 {
                     cart && cart.products.map((product, index) => (
                         <CartItem
-                            key={ index }
-                            id={ product.id } 
-                            name={ product.name } 
-                            image={ product.image } 
-                            price={ product.price }
-                            quantity={ product.quantity }
-                            size={ product.size }
-                            handleChange={ handleChange }
-                            handleRemove={ handleRemove }
+                            key={index}
+                            id={product.id} 
+                            name={product.name} 
+                            image={product.image} 
+                            price={product.price}
+                            quantity={product.quantity}
+                            size={product.size}
+                            handleChange={handleChange}
+                            handleRemove={handleRemove}
                         />
                     ))
                 }
-                <p>Total Cost: { cart.totalCost }</p>
+                <p>Total Cost: {cart.totalCost}</p>
             </>
             );
         
@@ -104,7 +104,7 @@ function Cart() {
 
     return (
         <div>
-            <form onSubmit={ e => handleSubmit(e, e.nativeEvent.submitter.name) }>
+            <form onSubmit={e => handleSubmit(e, e.nativeEvent.submitter.name)}>
                 {
                     renderCart()
                 }
@@ -113,7 +113,7 @@ function Cart() {
                     (!cart || !cart.products.length) && <p>Cart is empty.</p>
                 }
                 <input type="submit" name="save" value="Save Changes" />
-                { cart && <input type="submit" name="checkout" value="Checkout" /> }
+                {cart && <input type="submit" name="checkout" value="Checkout" />}
             </form>
         </div>
     );

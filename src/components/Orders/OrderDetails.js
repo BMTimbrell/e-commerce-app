@@ -31,18 +31,18 @@ function OrderDetails() {
                 <h2>Order Details</h2>
                 {
                     order.map((item, index) => (
-                            <Link key={ index } to={`/products/${item.shoe_id}`}>
+                            <Link key={index} to={`/products/${item.shoe_id}`}>
                                 <div>
-                                    <p>{ item.name }</p>
-                                    <img src={ item.image } alt="product" />
-                                    <p>Quantity: { item.quantity }</p>
-                                    <p>Price: £{ item.price }</p>
+                                    <p>{item.name}</p>
+                                    <img src={item.image} alt="product" />
+                                    <p>Quantity: {item.quantity}</p>
+                                    <p>Price: £{item.price}</p>
                                 </div>
                             </Link>
                     ))
                 }
-                <p>Total: £{ order[0].total_cost }</p>
-                <p>Ordered on: { order[0].order_date }</p>
+                <p>Total: £{order[0].total_cost}</p>
+                <p>Ordered on: {order[0].order_date}</p>
             </div>
         );
     

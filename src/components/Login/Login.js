@@ -3,7 +3,7 @@ import { loginUser } from "../../api/api";
 import { useNavigate, useOutletContext, Link } from 'react-router-dom';
 
 function Login() {
-    const [formData, setFormData] = useState({ email: '', password: '' });
+    const [formData, setFormData] = useState({email: '', password: ''});
     const [userId, setUserId] = useOutletContext();
     const navigate = useNavigate();
     const [error, setError] = useState('');
@@ -20,7 +20,7 @@ function Login() {
         if (result) {
             sessionStorage.setItem('id', result.id);
             setUserId(result.id);
-            setFormData({ email: '', passowrd: '' });
+            setFormData({email: '', passowrd: ''});
             setIsPending(false);
             navigate('/');
         } else {
@@ -51,22 +51,22 @@ function Login() {
         <div>
             <h2>Login</h2>
             
-            <form onSubmit={ handleSubmit }>
+            <form onSubmit={handleSubmit}>
                 <input 
                     required
                     type="email" 
                     name="email" 
-                    onChange={ handleChange } 
+                    onChange={handleChange} 
                     placeholder="email" 
                 />
                 <input
                     required
                     type="password" 
                     name="password" 
-                    onChange={ handleChange } 
+                    onChange={handleChange} 
                     placeholder="password" 
                 />
-                <input disabled={ isPending } type="submit" value="Login" />
+                <input disabled={isPending} type="submit" value="Login" />
             </form>
             <p>{error || ''}</p>
             <p><Link to="/register">Click here</Link> to register.</p>
