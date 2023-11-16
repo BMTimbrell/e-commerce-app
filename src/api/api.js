@@ -91,13 +91,16 @@ export const fetchUser = async id => {
     }
 };
 
-export const updateUser = async (id, data) => {
+export const updateUser = async (id, { firstName, lastName, email, password }) => {
     try {
         const response = await fetch(`${baseUrl}/users/${id}`, {
             method: "PUT",
             credentials: "include",
             body: JSON.stringify({
-                [data.type]: data.value
+                firstName,
+                lastName,
+                email,
+                password
             }),
             headers: {
                 "Content-Type": "application/json",
@@ -105,7 +108,7 @@ export const updateUser = async (id, data) => {
                 "Access-Control-Allow-Origin": "http://localhost:3000/"
             }
         });
-        
+        console.log(response);
         if (response.ok) return response;
         return null;
     } catch (error) {

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { fetchUser } from '../../api/api';
+import { fetchUser, updateUser } from '../../api/api';
 import { useNavigate, Link } from 'react-router-dom';
 
 function Profile() {
@@ -8,7 +8,14 @@ function Profile() {
         lastName: '',
         email: ''
     });
+    const [formData, setFormData] = useState({
+        firstName: '',
+        lastName: '',
+        email: '',
+        password: ''
+    });
     const [isEditing, setIsEditing] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
     const navigate = useNavigate();
 
     //Check user is logged in
@@ -33,19 +40,104 @@ function Profile() {
         }
     }, [navigate]);
 
+    const handleSubmit = async e => {
+        e.preventDefault();
+        setIsSubmitting(true);
+        const result = await updateUser(
+            sessionStorage.getItem('id'),
+            formData
+        );
+        setIsSubmitting(false);
+    };
+
+    const handleChange = e => {
+        if (e.target.name === 'firstName') {
+            setFormData(prev => (
+                {
+                    ...prev,
+                    firstName: e.target.value
+                }
+            ));
+        } else if (e.target.name === 'lastName') {
+            setFormData(prev => (
+                {
+                    ...prev,
+                    lastName: e.target.value
+                }
+            ));
+        } else if (e.target.name === 'email') {
+            setFormData(prev => (
+                {
+                    ...prev,
+                    email: e.target.value
+                }
+            ));
+        } else {
+            setFormData(prev => (
+                {
+                    ...prev,
+                    password: e.target.value
+                }
+            ));
+        }
+    };
+
     return (
         <div>
             <h2>{userData.firstName}'s Account</h2>
             <h3>User Details</h3>
             <section>
-                <p>First name: {userData.firstName}</p>
-                <p>Last name: {userData.lastName}</p>
-                <p>Email: {userData.email}</p>
-                <button onClick={() => {
-                    setIsEditing(true);
-                }}>
-                    {isEditing ? 'Save Changes' : 'Edit Details'}
+                {!isEditing && (
+                    <>
+                        <p>First name: {userData.firstName}</p>
+                        <p>Last name: {userData.lastName}</p>
+                        <p>Email: {userData.email}</p>
+                    </>
+                )}
+
+                {isEditing && (
+                    <form onSubmit={handleSubmit}>
+                        <input 
+                            type="text" 
+                            placeholder={userData.firstName}
+                            onChange={handleChange}
+                            name="firstName"
+                        />
+                        <input 
+                            type="text" 
+                            placeholder={userData.lastName}
+                            onChange={handleChange}
+                            name="lastName"
+                        />
+                        <input 
+                            type="email" 
+                            placeholder={userData.email}
+                            onChange={handleChange}
+                            name="email"
+                        />
+                        <input
+                            type="password" 
+                            placeholder="Password" 
+                            onChange={handleChange}
+                            name="password"
+                        />
+                        <input 
+                            type="submit"
+                            value={isSubmitting ? 'Saving...' : 'Save Changes'}
+                            disabled={isSubmitting}
+                        />
+                    </form>
+                )}
+
+                <button 
+                    onClick={() => {
+                        setIsEditing(true);
+                    }}
+                    style={isEditing ? {display: 'none'} : {}}
+                >
+                    Edit Details
                 </button>
+                
             </section>
             <h3>Orders</h3>
             <p><Link to="orders">Click here</Link> to view your past orders.</p>
