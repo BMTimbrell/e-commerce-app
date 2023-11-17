@@ -12,6 +12,7 @@ function Orders() {
         let checkUniqueId = -1;
         //Make array of items for each order
         for (const el of arr) {
+            // eslint-disable-next-line
             newOrders.push(arr.filter(order => 
                 el.id === order.id && el.id !== checkUniqueId
             ));
@@ -43,7 +44,7 @@ function Orders() {
     const renderOrders = () => {
         return (
             <>
-            <h2>Your Orders</h2>
+            <h1>Your Orders</h1>
             {
                 !orders.length && <p>You haven't made any orders yet</p>
             }

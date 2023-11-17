@@ -93,13 +93,12 @@ function Profile() {
 
     return (
         <div>
-            <h2>{userData.firstName}'s Account</h2>
-            <h3>User Details</h3>
+            <h1>{userData.firstName}'s Account</h1>
+            <h2>User Details</h2>
             <section>
                 {!isEditing && (
                     <>
-                        <p>First name: {userData.firstName}</p>
-                        <p>Last name: {userData.lastName}</p>
+                        <p>Name: {userData.firstName + ' ' + userData.lastName}</p>
                         <p>Email: {userData.email}</p>
                     </>
                 )}
@@ -149,8 +148,10 @@ function Profile() {
                 </button>
                 
             </section>
-            <h3>Orders</h3>
-            <p><Link to="orders">Click here</Link> to view your past orders.</p>
+            <section>
+                <h2>Orders</h2>
+                <p><Link to="orders">Click here</Link> to view your past orders.</p>
+            </section>
         </div>
     );
 }

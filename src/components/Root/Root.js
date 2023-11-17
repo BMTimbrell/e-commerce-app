@@ -10,10 +10,12 @@ function Root() {
     }, []);
 
     return (
-        <div>
+        <>
             <Header userId={userId} />
-            <Outlet context={[userId, setUserId]} />
-        </div>
+            <main>
+                <Outlet context={[userId, setUserId]} />
+            </main>  
+        </>
     );
 }
 

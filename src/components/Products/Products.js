@@ -61,7 +61,7 @@ function Products() {
 
     return (
         <div>
-            <h2>Products</h2>
+            <h1>Products</h1>
             <label htmlFor="category">Category: </label>
             <select 
                 name="category" 
