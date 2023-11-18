@@ -62,40 +62,46 @@ function Products() {
 
     return (
         <main className="main__products">
-            <section>
-                <h1>Products</h1>
-                <label htmlFor="category">Category: </label>
-                <select 
-                    name="category" 
-                    id="category" 
-                    onChange={handleCategoryChange} 
-                    defaultValue={"default"}
-                >
-                    <option key="default" value="default" disabled hidden>Filter by category</option>
-                    <option key="all" value="all">All</option>
-                    {
-                        categories && categories.map(el => (
-                            <option key={el.category} value={el.category}>{el.category}</option>  
-                        ))
-                    }
-                </select>
-
-                <input 
-                    type="checkbox" 
-                    id="men" 
-                    name="men" 
-                    value="Men" 
-                    onChange={handleGenderChange} 
-                />
-                <label htmlFor="men">Men</label>
-                <input 
-                    type="checkbox" 
-                    id="women" 
-                    name="women" 
-                    value="Women" 
-                    onChange={handleGenderChange} 
-                />
-                <label htmlFor="women">Women</label>
+            <h1 className="products__heading">Products</h1>
+            <section className="products__filters">
+                <div className="filter__category">
+                    <label htmlFor="category">Category: </label>
+                    <select 
+                        name="category" 
+                        className="category__dropdown"
+                        id="category" 
+                        onChange={handleCategoryChange} 
+                        defaultValue={"default"}
+                    >
+                        <option key="default" value="default" disabled hidden>Filter by category</option>
+                        <option key="all" value="all">All</option>
+                        {
+                            categories && categories.map(el => (
+                                <option key={el.category} value={el.category}>{el.category}</option>  
+                            ))
+                        }
+                    </select>
+                </div>
+                <div className="filter__gender">
+                    <input 
+                        type="checkbox" 
+                        className="gender__checkbox"
+                        id="men" 
+                        name="men" 
+                        value="Men" 
+                        onChange={handleGenderChange} 
+                    />
+                    <label htmlFor="men">Men</label>
+                    <input 
+                        type="checkbox"
+                        className="gender__checkbox"
+                        id="women" 
+                        name="women" 
+                        value="Women" 
+                        onChange={handleGenderChange} 
+                    />
+                    <label htmlFor="women">Women</label>
+                </div>
             </section>
             
 

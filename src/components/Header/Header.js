@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Header.css';
 import { NavLink, Link } from 'react-router-dom';
-import cart from '../../images/shopping-cart2.png';
+import cart from '../../images/cart.png';
 
 function Header({ userId }) {
     const [isCartActive, setIsCartActive] = useState(false);
