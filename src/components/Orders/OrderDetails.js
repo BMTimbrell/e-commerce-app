@@ -8,7 +8,7 @@ function OrderDetails() {
     const [order, setOrder] = useState([]);
     const { id } = useParams();
     const navigate = useNavigate();
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading] = useState(false);
 
     //Check user is logged in, and if so, fetch order
     useEffect(() => {
@@ -28,12 +28,12 @@ function OrderDetails() {
         }
     }, [navigate, id]);
 
-    if (isLoading) return <p>Loading...</p>;
+    if (isLoading) return <p style={{textAlign: 'center', fontWeight: 'bold'}}>Loading...</p>;
 
     if (order && order.length)
         return (
-            <div>
-                <h2>Order Details</h2>
+            <main>
+                <h1>Order Details</h1>
                 {
                     order.map((item, index) => (
                             <Link key={index} to={`/products/${item.shoe_id}`}>
@@ -48,14 +48,14 @@ function OrderDetails() {
                 }
                 <p>Total: £{order[0].total_cost}</p>
                 <p>Ordered on: {formatDate(order[0].order_date)}</p>
-            </div>
+            </main>
         );
         
         return (
-            <div>
-                <h2>Order Details</h2>
+            <main>
+                <h1>Order Details</h1>
                 <p>Couldn't find order</p>
-            </div>
+            </main>
         );
 }
 

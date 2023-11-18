@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { fetchProductById, fetchCart, createCart, addItemToCart } from '../../api/api';
+import './ProductDetails.css';
 
 function ProductDetails() {
     const [isLoading, setIsLoading] = useState(true);
@@ -10,6 +11,7 @@ function ProductDetails() {
     const [sizeError, setSizeError] = useState('');
     const { id } = useParams();
     const navigate = useNavigate();
+    const errorLoadingStyle = {textAlign: 'center', fontWeight: 'bold'};
 
     useEffect(() => {
         setIsLoading(true);
@@ -85,29 +87,31 @@ function ProductDetails() {
 
     if (!isLoading && !error) {
         return (
-            <div>
-                <p>{product.name}</p>
+            <main className="product__details">
+                <h1>{product.name}</h1>
                 <img src={product.image} alt="product" />
-                <form onSubmit={handleSubmit}>
-                    <label htmlFor="size">Size:</label>
-                    <select name="size" id="size" onChange={handleChange} defaultValue={"default"}>
-                        <option key="default" value="default" disabled hidden>Select a size</option>
-                        {
-                            product.size.map(el => (
-                                <option key={el} value={el}>{el}</option>  
-                            ))
-                        }
-                    </select>
-                    <input type="submit" value="Add to cart" />
+                <form className="product__details__form" onSubmit={handleSubmit}>
+                    <div className="size">
+                        <label htmlFor="size">Size:</label>
+                        <select className="sizeDropdown" name="size" id="size" onChange={handleChange} defaultValue={"default"}>
+                            <option key="default" value="default" disabled hidden>Select a size</option>
+                            {
+                                product.size.map(el => (
+                                    <option key={el} value={el}>{el}</option>  
+                                ))
+                            }
+                        </select>
+                    </div>
+                    <input className="addCartBtn" type="submit" value="Add to cart" />
                 </form>
                 <p>{sizeError}</p>
                 
-            </div>
+            </main>
         );
     }
 
-    if (isLoading) return <p>Loading...</p>;
-    return <p>Failed to load product!</p>;
+    if (isLoading) return <p style={errorLoadingStyle}>Loading...</p>;
+    return <p style={errorLoadingStyle}>Failed to load product!</p>;
 }
 
 export default ProductDetails;
