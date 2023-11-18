@@ -90,6 +90,9 @@ function ProductDetails() {
             <main className="product__details">
                 <h1>{product.name}</h1>
                 <img src={product.image} alt="product" />
+                <div className="product__details__info">
+                    <p>Manufacturer: {product.manufacturer}</p>
+                    <p>Price: £{product.price}</p>
                 <form className="product__details__form" onSubmit={handleSubmit}>
                     <div className="size">
                         <label htmlFor="size">Size:</label>
@@ -104,6 +107,7 @@ function ProductDetails() {
                     </div>
                     <input className="addCartBtn" type="submit" value="Add to cart" />
                 </form>
+                </div>
                 <p>{sizeError}</p>
                 
             </main>

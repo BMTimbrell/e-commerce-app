@@ -63,8 +63,14 @@
     font-size: 1.2rem;
 }
 
-.size {
+.product__details__info {
     font-size: 1.5rem;
+}
+
+.product__details__info {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.75rem;
 }
 
 @media (max-width: 23.75em) {
@@ -76,7 +82,7 @@
         font-size: 1rem;
     }
     
-    .size {
+    .product__details__info {
         font-size: 1.2rem;
     }
 }
