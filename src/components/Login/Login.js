@@ -68,7 +68,7 @@ function Login() {
                         onChange={handleChange} 
                         placeholder="Password" 
                     />
-                    <input className="btn" disabled={isPending} type="submit" value="Login" />
+                    <input className="btn" disabled={isPending} type="submit" value={isPending ? "Logging in..." : "Login"} />
                 </form>
                 <p>{error || ''}</p>
             </section>
