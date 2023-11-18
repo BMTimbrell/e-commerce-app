@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { loginUser } from "../../api/api";
 import { useNavigate, useOutletContext, Link } from 'react-router-dom';
+import './Login.css';
 
 function Login() {
     const [formData, setFormData] = useState({email: '', password: ''});
@@ -48,31 +49,31 @@ function Login() {
     };
 
     return (
-        <main>
-            <section>
-                <h1>Login</h1>
+        <main className="main__login">
+            <section className="login">
+                <h1 className="login__heading">Login</h1>
                 
-                <form onSubmit={handleSubmit}>
+                <form className="login__form" onSubmit={handleSubmit}>
                     <input 
                         required
                         type="email" 
                         name="email" 
                         onChange={handleChange} 
-                        placeholder="email" 
+                        placeholder="Email" 
                     />
                     <input
                         required
                         type="password" 
                         name="password" 
                         onChange={handleChange} 
-                        placeholder="password" 
+                        placeholder="Password" 
                     />
-                    <input disabled={isPending} type="submit" value="Login" />
+                    <input className="btn" disabled={isPending} type="submit" value="Login" />
                 </form>
                 <p>{error || ''}</p>
             </section>
             <section>
-                <p><Link to="/register">Click here</Link> to register.</p>
+                <p><Link className="register__link" to="/register">Click here</Link> to register.</p>
             </section>
         </main>
     );
