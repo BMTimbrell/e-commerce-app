@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './Products.css';
 
 function Product({ id, name, image, price, size, quantity }) {
     const renderSizeAndQuantity = () => {
@@ -16,19 +17,16 @@ function Product({ id, name, image, price, size, quantity }) {
     }
 
     return (
-        <div>
-            {
-                name
-            }
-            <Link to={`${id}`}>
-                <img src={image} alt="product" />
-            </Link>
-            
-            <p>Price: £{price}</p>
-            {
-               renderSizeAndQuantity()
-            }
-        </div>
+        <Link to={`${id}`}>
+            <section className="product">
+                <div className="product__header">{name}</div>
+                <div className="product__body">
+                    <img src={image} alt="product" />
+                    <p>Price: £{price}</p>
+                    {renderSizeAndQuantity()}
+                </div>
+            </section>
+        </Link>
     );
 }
 

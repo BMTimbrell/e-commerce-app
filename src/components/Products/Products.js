@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { fetchProducts, fetchCategories } from '../../api/api';
 import Product from './Product';
 import { useSearchParams } from 'react-router-dom';
+import './Products.css';
 
 function Products() {
     const [isLoading, setIsLoading] = useState(true);
@@ -60,40 +61,43 @@ function Products() {
     };
 
     return (
-        <div>
-            <h1>Products</h1>
-            <label htmlFor="category">Category: </label>
-            <select 
-                name="category" 
-                id="category" 
-                onChange={handleCategoryChange} 
-                defaultValue={"default"}
-            >
-                <option key="default" value="default" disabled hidden>Filter by category</option>
-                <option key="all" value="all">All</option>
-                {
-                    categories && categories.map(el => (
-                        <option key={el.category} value={el.category}>{el.category}</option>  
-                    ))
-                }
-            </select>
+        <main className="main__products">
+            <section>
+                <h1>Products</h1>
+                <label htmlFor="category">Category: </label>
+                <select 
+                    name="category" 
+                    id="category" 
+                    onChange={handleCategoryChange} 
+                    defaultValue={"default"}
+                >
+                    <option key="default" value="default" disabled hidden>Filter by category</option>
+                    <option key="all" value="all">All</option>
+                    {
+                        categories && categories.map(el => (
+                            <option key={el.category} value={el.category}>{el.category}</option>  
+                        ))
+                    }
+                </select>
 
-            <input 
-                type="checkbox" 
-                id="men" 
-                name="men" 
-                value="Men" 
-                onChange={handleGenderChange} 
-            />
-            <label htmlFor="men">Men</label>
-            <input 
-                type="checkbox" 
-                id="women" 
-                name="women" 
-                value="Women" 
-                onChange={handleGenderChange} 
-            />
-            <label htmlFor="women">Women</label>
+                <input 
+                    type="checkbox" 
+                    id="men" 
+                    name="men" 
+                    value="Men" 
+                    onChange={handleGenderChange} 
+                />
+                <label htmlFor="men">Men</label>
+                <input 
+                    type="checkbox" 
+                    id="women" 
+                    name="women" 
+                    value="Women" 
+                    onChange={handleGenderChange} 
+                />
+                <label htmlFor="women">Women</label>
+            </section>
+            
 
             {
                 isLoading && 'Loading...'
@@ -101,8 +105,8 @@ function Products() {
             {
                 error && 'Failed to load products!'
             }
-            {
-                !isLoading && !error && products.map(
+            <section className="products">
+                {!isLoading && !error && products.map(
                     product => (
                         <Product 
                             key={product.id}
@@ -114,10 +118,10 @@ function Products() {
                             gender={product.gender}
                             image={product.image}
                         />
-                    )
-                )
-            }
-        </div>
+                    ))
+                }
+            </section>
+        </main>
     );
 }
 

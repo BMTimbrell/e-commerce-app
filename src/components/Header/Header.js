@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Header.css';
 import { NavLink, Link } from 'react-router-dom';
-import cart from '../../images/cart.png';
+import cart from '../../images/shopping-cart2.png';
 
 function Header({ userId }) {
     const [isCartActive, setIsCartActive] = useState(false);
@@ -13,18 +13,27 @@ function Header({ userId }) {
                 <nav className="nav">
                     <ul className="nav__list">
                         <li className="nav__item" key={"home"}>
-                            <NavLink to="/" className={({isActive}) => isActive ? 'nav-link nav-link-active' : 'nav-link'}>
+                            <NavLink 
+                                to="/" 
+                                className={({isActive}) => isActive ? 'nav__link nav__link--active' : 'nav__link'}
+                            >
                                 Home
                             </NavLink>
                         </li>
                         <li className="nav__item" key={"products"}>
-                            <NavLink to="/products"  className={({isActive}) => isActive ? 'nav-link nav-link-active' : 'nav-link'}>
+                            <NavLink 
+                                to="/products"  
+                                className={({isActive}) => isActive ? 'nav__link nav__link--active' : 'nav__link'}
+                            >
                                 Products
                             </NavLink>
                         </li>
                         {!userId &&
                             <li className="nav__item" key={"login"}>
-                                <NavLink to="/login"  className={({isActive}) => isActive ? 'nav-link nav-link-active' : 'nav-link'}>
+                                <NavLink 
+                                    to="/login"  
+                                    className={({isActive}) => isActive ? 'nav__link nav__link--active' : 'nav__link'}
+                                >
                                     Login
                                 </NavLink>
                             </li>
@@ -33,17 +42,26 @@ function Header({ userId }) {
                             (
                                 <>
                                     <li className="nav__item" key={"profile"}>
-                                        <NavLink to="/profile"  className={({isActive}) => isActive ? 'nav-link nav-link-active' : 'nav-link'}>
+                                        <NavLink 
+                                            to="/profile"  
+                                            className={({isActive}) => isActive ? 'nav__link nav__link--active' : 'nav__link'}
+                                        >
                                             Profile
                                         </NavLink>
                                     </li>
-                                    <li className={isCartActive ? 'nav__item cart cart-active' : 'nav__item cart'} key={"cart"}>
-                                        <NavLink to="/cart"  className={({isActive}) => isActive ? setIsCartActive(true) : setIsCartActive(false)}>
+                                    <li className={isCartActive ? 'nav__item cart cart--active' : 'nav__item cart'} key={"cart"}>
+                                        <NavLink 
+                                            to="/cart"  
+                                            className={({isActive}) => isActive ? setIsCartActive(true) : setIsCartActive(false)}
+                                        >
                                             <img src={cart} alt="cart" style={{width: '2rem', display: 'block'}} />
                                         </NavLink>
                                     </li>
                                     <li className="nav__item" key={"logout"}>
-                                        <NavLink to="/logout"  className={({isActive}) => isActive ? 'nav-link nav-link-active' : 'nav-link'}>
+                                        <NavLink 
+                                            to="/logout"  
+                                            className={({isActive}) => isActive ? 'nav__link nav__link--active' : 'nav__link'}
+                                        >
                                             Logout
                                         </NavLink>
                                     </li>

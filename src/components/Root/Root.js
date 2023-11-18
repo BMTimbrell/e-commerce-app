@@ -12,9 +12,7 @@ function Root() {
     return (
         <>
             <Header userId={userId} />
-            <main>
-                <Outlet context={[userId, setUserId]} />
-            </main>  
+            <Outlet context={[userId, setUserId]} />
         </>
     );
 }

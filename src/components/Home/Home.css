@@ -1,0 +1,15 @@
+.main__home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 6.25rem;
+    padding: 3.125rem 0;
+}
+
+.section {
+    text-align: center;
+}
+
+.section__heading {
+    margin-bottom: 1.25rem;
+}

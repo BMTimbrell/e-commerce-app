@@ -8,6 +8,7 @@ function OrderDetails() {
     const [order, setOrder] = useState([]);
     const { id } = useParams();
     const navigate = useNavigate();
+    const [isLoading, setIsLoading] = useState(false);
 
     //Check user is logged in, and if so, fetch order
     useEffect(() => {
@@ -26,6 +27,8 @@ function OrderDetails() {
             navigate('/login');
         }
     }, [navigate, id]);
+
+    if (isLoading) return <p>Loading...</p>;
 
     if (order && order.length)
         return (
@@ -47,7 +50,7 @@ function OrderDetails() {
                 <p>Ordered on: {formatDate(order[0].order_date)}</p>
             </div>
         );
-    
+        
         return (
             <div>
                 <h2>Order Details</h2>

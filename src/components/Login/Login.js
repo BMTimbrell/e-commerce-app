@@ -48,29 +48,33 @@ function Login() {
     };
 
     return (
-        <div>
-            <h1>Login</h1>
-            
-            <form onSubmit={handleSubmit}>
-                <input 
-                    required
-                    type="email" 
-                    name="email" 
-                    onChange={handleChange} 
-                    placeholder="email" 
-                />
-                <input
-                    required
-                    type="password" 
-                    name="password" 
-                    onChange={handleChange} 
-                    placeholder="password" 
-                />
-                <input disabled={isPending} type="submit" value="Login" />
-            </form>
-            <p>{error || ''}</p>
-            <p><Link to="/register">Click here</Link> to register.</p>
-        </div>
+        <main>
+            <section>
+                <h1>Login</h1>
+                
+                <form onSubmit={handleSubmit}>
+                    <input 
+                        required
+                        type="email" 
+                        name="email" 
+                        onChange={handleChange} 
+                        placeholder="email" 
+                    />
+                    <input
+                        required
+                        type="password" 
+                        name="password" 
+                        onChange={handleChange} 
+                        placeholder="password" 
+                    />
+                    <input disabled={isPending} type="submit" value="Login" />
+                </form>
+                <p>{error || ''}</p>
+            </section>
+            <section>
+                <p><Link to="/register">Click here</Link> to register.</p>
+            </section>
+        </main>
     );
 }
 

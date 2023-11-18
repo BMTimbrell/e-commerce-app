@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 function Orders() {
     const [orders, setOrders] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
     
     const formatOrders = (arr) => {
@@ -27,6 +28,7 @@ function Orders() {
     useEffect(() => {
         if (sessionStorage.getItem('id')) {
             async function getUser() {
+                setIsLoading(true);
                 const result = await fetchUser(sessionStorage.getItem('id'));
                 if (result) {
                     formatOrders(await fetchOrders());
@@ -36,6 +38,7 @@ function Orders() {
             } 
 
             getUser();
+            setIsLoading(false);
         } else {
             navigate('/login');
         }
@@ -43,29 +46,27 @@ function Orders() {
 
     const renderOrders = () => {
         return (
-            <>
-            <h1>Your Orders</h1>
-            {
-                !orders.length && <p>You haven't made any orders yet</p>
-            }
-            {
-                orders.map((order, index) => (
+            <main>
+                <h1>Your Orders</h1>
+                {isLoading ? <p>Loading orders...</p>
+                : !orders.length && <p>You haven't made any orders yet</p>
+                }
+                {orders.map((order, index) => (
                     <Order
                         key={index}
                         order={order}
                     />
-                ))
-            }
-            </>
+                ))}
+            </main>
         );
     };
 
     return (
-        <div>
+        <main>
             {
                 orders && renderOrders()
             }
-        </div>
+        </main>
     );
 }
 

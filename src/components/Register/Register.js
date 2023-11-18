@@ -67,49 +67,56 @@ function Register() {
     };
 
     return (
-        <div>
-             <h1>Register</h1>
-             
-            <form onSubmit={handleSubmit}>
-                <input 
-                    required
-                    name="firstName" 
-                    type="text" 
-                    onChange={handleChange} 
-                    placeholder="first name" 
-                />
-                <input 
-                    required
-                    name="lastName" 
-                    type="text" 
-                    onChange={handleChange} 
-                    placeholder="last name" 
-                />
-                <input
-                    required
-                    name="email" 
-                    type="email" 
-                    onChange={handleChange} 
-                    placeholder="email" 
-                />
-                <input 
-                    required
-                    name="password" 
-                    type="password" 
-                    onChange={handleChange} 
-                    placeholder="password" 
-                />
-                <input 
-                    disabled={isPending} 
-                    type="submit" 
-                    value="Register" 
-                />
-            </form>
-            {
-                error && <p>Invalid user credentials</p>
-            }
-            <p>Already have an account? <Link to="/login">Click here</Link> to login.</p>
-        </div>
+        <main>
+            <section>
+                <h1>Register</h1>
+                
+                <form onSubmit={handleSubmit}>
+                    <input 
+                        required
+                        name="firstName" 
+                        type="text" 
+                        onChange={handleChange} 
+                        placeholder="first name" 
+                    />
+                    <input 
+                        required
+                        name="lastName" 
+                        type="text" 
+                        onChange={handleChange} 
+                        placeholder="last name" 
+                    />
+                    <input
+                        required
+                        name="email" 
+                        type="email" 
+                        onChange={handleChange} 
+                        placeholder="email" 
+                    />
+                    <input 
+                        required
+                        name="password" 
+                        type="password" 
+                        onChange={handleChange} 
+                        placeholder="password" 
+                    />
+                    <input 
+                        disabled={isPending} 
+                        type="submit" 
+                        value="Register" 
+                    />
+                </form>
+                {
+                    error && <p>Invalid user credentials</p>
+                }
+            </section>
+            <section>
+                <p>
+                    Already have an account? <Link to="/login">Click here</Link> to login.
+                </p>
+            </section>
+            
+        </main>
     );
 }
 
