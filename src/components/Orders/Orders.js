@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Order from './Order';
 import { fetchUser, fetchOrders } from '../../api/api';
 import { useNavigate } from 'react-router-dom';
+import './Orders.css';
 
 function Orders() {
     const [orders, setOrders] = useState([]);
@@ -46,27 +47,29 @@ function Orders() {
 
     const renderOrders = () => {
         return (
-            <main>
-                <h1>Your Orders</h1>
-                {isLoading ? <p>Loading orders...</p>
-                : !orders.length && <p>You haven't made any orders yet</p>
-                }
-                {orders.map((order, index) => (
-                    <Order
-                        key={index}
-                        order={order}
-                    />
-                ))}
+            <main className="orders">
+                <h1 className="orders__heading">Your Orders</h1>
+                <section className="orders__list">
+                    {isLoading ? <h2>Loading orders...</h2>
+                    : !orders.length && <p>You haven't made any orders yet</p>
+                    }
+                    {orders.map((order, index) => (
+                        <Order
+                            key={index}
+                            order={order}
+                        />
+                    ))}
+                </section>
             </main>
         );
     };
 
     return (
-        <main>
-            {
-                orders && renderOrders()
+        <>
+            {orders ? renderOrders()
+                : <h2>Failed to load orders</h2>
             }
-        </main>
+        </>
     );
 }
 
