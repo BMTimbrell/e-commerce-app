@@ -40,10 +40,16 @@
     transform: scale(1.025);
 }
 
+.product__body p ~ p {
+    margin-bottom: 0.5rem;
+}
 
+.product__body p + p {
+    margin-top: 0.5rem;
+}
 
 .main__products {
-    padding: 1rem 3.125rem;
+    padding: 2rem 3.125rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -72,6 +78,10 @@
 
 .category__dropdown {
     margin-left: 0.25rem;
+}
+
+.link {
+    color: hsl(210, 100%, 40%);
 }
 
 @media (max-width: 29.7em) {

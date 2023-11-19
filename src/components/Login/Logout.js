@@ -19,9 +19,9 @@ function Logout() {
     
 
     return (
-        <p>
+        <h1 style={{textAlign: 'center', marginTop: '2rem'}}>
             Logging out...
-        </p>
+        </h1>
     );
 }
 

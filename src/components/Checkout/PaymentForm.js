@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import { makePayment } from '../../api/api';
+import './Checkout.css';
 
 function PaymentForm({ amount, updateSuccess }) {
     const [isProcessing, setIsProcessing] = useState(false);
@@ -27,16 +28,14 @@ function PaymentForm({ amount, updateSuccess }) {
     
 
     return (
-        <>
-            <form onSubmit={handleSubmit}>
+        <form className="form" onSubmit={handleSubmit}>
             <fieldset>
                 <CardElement />
             </fieldset>
-            <button disabled={isProcessing}>
+            <button className="btn" type="submit" disabled={isProcessing}>
                 {isProcessing ? 'Processing...' : 'Pay Now'}
             </button>
         </form>
-        </>
     );
 }
 

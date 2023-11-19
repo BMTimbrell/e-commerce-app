@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { registerUser } from '../../api/api';
 import { useNavigate, useOutletContext, Link } from 'react-router-dom';
+import '../Login/Login.css';
 
 function Register() {
     const [userId, setUserId] = useOutletContext();
@@ -67,52 +68,53 @@ function Register() {
     };
 
     return (
-        <main>
-            <section>
-                <h1>Register</h1>
+        <main style={{padding: '2rem', textAlign: 'center'}}>
+            <section className="register">
+                <h1 className="form__heading">Register</h1>
                 
-                <form onSubmit={handleSubmit}>
+                <form className="form" onSubmit={handleSubmit}>
                     <input 
                         required
                         name="firstName" 
                         type="text" 
                         onChange={handleChange} 
-                        placeholder="first name" 
+                        placeholder="First name" 
                     />
                     <input 
                         required
                         name="lastName" 
                         type="text" 
                         onChange={handleChange} 
-                        placeholder="last name" 
+                        placeholder="Last name" 
                     />
                     <input
                         required
                         name="email" 
                         type="email" 
                         onChange={handleChange} 
-                        placeholder="email" 
+                        placeholder="Email" 
                     />
                     <input 
                         required
                         name="password" 
                         type="password" 
                         onChange={handleChange} 
-                        placeholder="password" 
+                        placeholder="Password" 
                     />
                     <input 
                         disabled={isPending} 
                         type="submit" 
-                        value="Register" 
+                        className="btn"
+                        value={isPending ? "Registering..." : "Register"}
                     />
                 </form>
                 {
-                    error && <p>Invalid user credentials</p>
+                    error && <><p>Invalid user credentials</p><br /></>
                 }
             </section>
             <section>
-                <p>
-                    Already have an account? <Link to="/login">Click here</Link> to login.
+                <p style={{textAlign: 'center'}}>
+                    Already have an account? <Link className="link" to="/login">Click here</Link> to login.
                 </p>
             </section>
             

@@ -6,7 +6,7 @@ function Home() {
     return (
         <main className="main__home">
             <section className="section">
-                <h1 className="section__heading">Best Place To Buy Shoes</h1>
+                <h2 className="section__heading">Best Place To Buy Shoes</h2>
                 <p className="section__text">
                     Shop at the best shoe store with the best offers!
                 </p>

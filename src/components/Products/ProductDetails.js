@@ -11,7 +11,7 @@ function ProductDetails() {
     const [sizeError, setSizeError] = useState('');
     const { id } = useParams();
     const navigate = useNavigate();
-    const errorLoadingStyle = {textAlign: 'center', fontWeight: 'bold'};
+    const messageStyle = {textAlign: 'center', marginTop: '2rem'};
 
     useEffect(() => {
         setIsLoading(true);
@@ -114,8 +114,8 @@ function ProductDetails() {
         );
     }
 
-    if (isLoading) return <p style={errorLoadingStyle}>Loading...</p>;
-    return <p style={errorLoadingStyle}>Failed to load product!</p>;
+    if (isLoading) return <h1 style={messageStyle}>Loading...</h1>;
+    return <h1 style={messageStyle}>Failed to load product!</h1>;
 }
 
 export default ProductDetails;

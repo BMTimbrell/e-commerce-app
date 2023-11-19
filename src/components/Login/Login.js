@@ -51,9 +51,9 @@ function Login() {
     return (
         <main className="main__login">
             <section className="login">
-                <h1 className="login__heading">Login</h1>
+                <h1 className="form__heading">Login</h1>
                 
-                <form className="login__form" onSubmit={handleSubmit}>
+                <form className="form" onSubmit={handleSubmit}>
                     <input 
                         required
                         type="email" 
@@ -70,10 +70,10 @@ function Login() {
                     />
                     <input className="btn" disabled={isPending} type="submit" value={isPending ? "Logging in..." : "Login"} />
                 </form>
-                <p>{error || ''}</p>
+                <p>{error || ''}</p><br />
             </section>
             <section>
-                <p><Link className="register__link" to="/register">Click here</Link> to register.</p>
+                <p><Link className="link" to="/register">Click here</Link> to register.</p>
             </section>
         </main>
     );

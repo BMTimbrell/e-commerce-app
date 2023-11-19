@@ -5,6 +5,7 @@ import Product from '../Products/Product';
 import PaymentForm from './PaymentForm';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
+import './Checkout.css';
 
 const stripePromise = loadStripe(process.env.REACT_APP_KEY);
 
@@ -35,9 +36,9 @@ function Checkout() {
 
     if (success) {
         return (
-            <div>
-                <p>Payment Successful!</p>
-                <Link to="/products">Continue shopping</Link>
+            <div style={{textAlign: 'center'}}>
+                <h1 style={{textAlign: 'center', marginTop: '2rem', marginBottom: '1rem'}}>Payment Successful!</h1>
+                <Link className="link" to="/products">Continue shopping</Link>
             </div>
         );
     }
@@ -45,14 +46,17 @@ function Checkout() {
     if (!cart || !cart.products.length) {
         return (
             <div>
-                <p>
-                    Cart is empty. <Link to="/products">Add items to cart.</Link>
+                <p style={{textAlign: 'center', marginTop: '2rem', fontSize: '1.2rem'}}>
+                    Cart is empty. <Link className="link" to="/products">Add items to cart.</Link>
                 </p>
             </div>
         );
     }
     return (
-        <div>
+        <main className="checkout">
+            <h1 className="checkout__heading">
+                Checkout
+            </h1>
             {
                  cart && cart.products.map((product, index) => (
                     <Product
@@ -66,8 +70,7 @@ function Checkout() {
                     />
                 ))
             }
-
-            <p>Total to pay: {cart.totalCost}</p>
+            <p style={{marginTop: '1rem'}}>Total to pay: £{cart.totalCost}</p>
            {
 
                 <Elements stripe={stripePromise}>
@@ -75,7 +78,7 @@ function Checkout() {
                 </Elements>
            }
            
-        </div>
+        </main>
     );
 }
 

@@ -106,10 +106,10 @@ function Products() {
             
 
             {
-                isLoading && 'Loading...'
+                isLoading && <h2>Loading...</h2>
             }
             {
-                error && 'Failed to load products!'
+                error && <h2>Failed to load products!</h2>
             }
             <section className="products">
                 {!isLoading && !error && products.map(

@@ -1,18 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { fetchUser, fetchCart, createCart } from '../../api/api';
 import CartItem from './CartItem';
+import './Cart.css';
 
 function Cart() {
     const [cart, setCart] = useState(null);
     const navigate = useNavigate();
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         if (sessionStorage.getItem('id')) {
+            setIsLoading(true);
             async function getUser() {
                 const result = await fetchUser(sessionStorage.getItem('id'));
                 if (result) {
                     setCart(await fetchCart());
+                    setIsLoading(false);
                 } else {
                     navigate('/logout');
                 }   
@@ -73,7 +77,7 @@ function Cart() {
         if (submitter === "save") await createCart({products: cart.products});
         if (submitter === "checkout") {
             await createCart({products: cart.products});
-            navigate('/checkout');
+            navigate('checkout');
         }
     };
 
@@ -96,26 +100,36 @@ function Cart() {
                         />
                     ))
                 }
-                <p>Total Cost: {cart.totalCost}</p>
+                <p style={{textAlign: 'center'}}>Total Cost: £{cart.totalCost}</p>
             </>
             );
         
     };
 
     return (
-        <div>
-            <form onSubmit={e => handleSubmit(e, e.nativeEvent.submitter.name)}>
+        <main className="cart__page">
+            <h1 className="cart__page__heading">Your Cart</h1>
+            <form className="cart__form" onSubmit={e => handleSubmit(e, e.nativeEvent.submitter.name)}>
+                {renderCart()}
+                {isLoading && <h2>Loading Cart...</h2>}
                 {
-                    renderCart()
+                    ((!cart || !cart.products.length) && !isLoading) && (
+                        <>
+                            <p style={{textAlign: 'center', marginTop: '2rem', fontSize: '1.2rem'}}>
+                                Cart is empty. <Link className="link" to="/products">Add items to cart.</Link>
+                            </p>
+                        </>
+                    )
+                
                 }
-
-                {
-                    (!cart || !cart.products.length) && <p>Cart is empty.</p>
+                {cart?.products.length > 0 &&
+                    <div className="cart__buttons">
+                        <input className="btn" type="submit" name="save" value="Save Changes" />
+                        {cart && <input className="btn" type="submit" name="checkout" value="Checkout" />}
+                    </div>
                 }
-                <input type="submit" name="save" value="Save Changes" />
-                {cart && <input type="submit" name="checkout" value="Checkout" />}
             </form>
-        </div>
+        </main>
     );
 }
 

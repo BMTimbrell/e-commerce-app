@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: center;
     row-gap: 6.25rem;
-    padding: 3.125rem 0;
+    padding: 5rem 1rem;
 }
 
 .section {
@@ -11,5 +11,10 @@
 }
 
 .section__heading {
-    margin-bottom: 1.25rem;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+}
+
+.section__text {
+    font-size: 1.2rem;
 }
