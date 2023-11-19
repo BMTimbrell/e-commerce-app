@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { fetchUser, updateUser } from '../../api/api';
 import { useNavigate, Link } from 'react-router-dom';
+import './Profile.css';
 
 function Profile() {
     const [userData, setUserData] = useState({
@@ -92,10 +93,10 @@ function Profile() {
     };
 
     return (
-        <main>
-            <h1>{userData.firstName}'s Account</h1>
-            <section>
-                <h2>User Details</h2>
+        <main className="user-profile">
+            <h1 className="profile__heading">{userData.firstName}'s Account</h1>
+            <section className="user-details">
+                <h2 className="user-details__heading">User Details</h2>
             
                 {!isEditing && (
                     <>
@@ -105,7 +106,7 @@ function Profile() {
                 )}
 
                 {isEditing && (
-                    <form onSubmit={handleSubmit}>
+                    <form className="form" onSubmit={handleSubmit}>
                         <input 
                             type="text" 
                             placeholder={userData.firstName}
@@ -132,6 +133,7 @@ function Profile() {
                         />
                         <input 
                             type="submit"
+                            className="btn"
                             value={isSubmitting ? 'Saving...' : 'Save Changes'}
                             disabled={isSubmitting}
                         />
@@ -143,15 +145,16 @@ function Profile() {
                     onClick={() => {
                         setIsEditing(true);
                     }}
+                    className="btn"
                     style={isEditing ? {display: 'none'} : {}}
                 >
                     Edit Details
                 </button>
                 
             </section>
-            <section>
-                <h2>Orders</h2>
-                <p><Link to="orders">Click here</Link> to view your past orders.</p>
+            <section className="profile__orders">
+                <h2 className="profile__orders__heading">Orders</h2>
+                <p><Link className="link" to="orders">Click here</Link> to view your past orders.</p>
             </section>
         </main>
     );

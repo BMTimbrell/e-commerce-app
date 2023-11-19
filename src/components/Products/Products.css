@@ -78,6 +78,18 @@
 
 .category__dropdown {
     margin-left: 0.25rem;
+    border: none;
+    background-color: hsl(200, 50%, 50%);
+    color: white;
+    height: 2em;
+    border-radius: 0.25em;
+    margin-left: 0.5rem;
+    padding-left: 0.25em;
+}
+
+.category__dropdown:hover {
+    background-color: hsl(200, 50%, 70%);
+    color: hsl(200, 50%, 20%);
 }
 
 .link {
