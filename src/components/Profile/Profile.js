@@ -94,7 +94,9 @@ function Profile() {
 
     return (
         <main className="user-profile">
-            <h1 className="profile__heading">{userData.firstName}'s Account</h1>
+            <h1 className="profile__heading">
+                {userData.firstName? userData.firstName + '\'s Account' : 'Your Account'}
+            </h1>
             <section className="user-details">
                 <h2 className="user-details__heading">User Details</h2>
             

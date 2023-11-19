@@ -12,6 +12,10 @@ function Products() {
     const [searchParams, setSearchParams] = useSearchParams();
     const category = searchParams.get('category');
     const gender = searchParams.get('gender');
+    const [isChecked, setIsChecked] = useState({
+        men: gender === "Men" || gender === "Both",
+        women: gender === "Women" || gender === "Both"
+    });
 
     useEffect(() => {
         setIsLoading(true);
@@ -37,6 +41,13 @@ function Products() {
         getCategories();   
     }, [setIsLoading, setError, setProducts, category, gender]);
 
+    useEffect(() => {
+        setIsChecked({
+            men: gender === "Men" || gender === "Both",
+            women: gender === "Women" || gender === "Both"
+        });
+    }, [gender]);
+
     const handleCategoryChange = e => {
         searchParams.set('category', e.target.value);
         setSearchParams(searchParams);
@@ -44,18 +55,20 @@ function Products() {
 
     const handleGenderChange = e => {
         //Check if box is checked or unchecked and change value accordingly
+        const value = e.target.value;
+        const checked = e.target.checked;
         let param = '';
-        if (!e.target.checked) {
-            if (gender === "Both") {
-                if (e.target.value === "Men") param = "Women";
-                if (e.target.value === "Women") param = "Men";
-            } else {
-                param = 'Both'
-            }
-        } else {
-            if (gender) param = "Both";
-            else param = e.target.value;
-        }
+        param = value;
+        console.log (isChecked);
+        if (checked && ((value === 'Men' && !isChecked.women) || (value === 'Women && !isChecked.men'))) {
+            param = value;
+        } else if (checked && (isChecked.women || isChecked.men)) {
+            param = 'Both'
+        } else if (gender === 'Both') {
+            if (value === 'Men') param = 'Women';
+            else param = 'Men';
+        } else if (!checked) param = '';
+
         searchParams.set('gender', param);
         setSearchParams(searchParams);
     };
@@ -86,9 +99,9 @@ function Products() {
                     <input 
                         type="checkbox" 
                         className="gender__checkbox"
-                        id="men" 
-                        name="men" 
-                        value="Men" 
+                        id="men"
+                        value="Men"
+                        defaultChecked={isChecked.men} 
                         onChange={handleGenderChange} 
                     />
                     <label htmlFor="men">Men</label>
@@ -96,8 +109,8 @@ function Products() {
                         type="checkbox"
                         className="gender__checkbox"
                         id="women" 
-                        name="women" 
-                        value="Women" 
+                        value="Women"
+                        defaultChecked={isChecked.women}  
                         onChange={handleGenderChange} 
                     />
                     <label htmlFor="women">Women</label>

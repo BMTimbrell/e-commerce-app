@@ -68,11 +68,17 @@
     max-width: 37.5rem;
 }
 
-.filter__gender > .gender__checkbox {
+.gender__checkbox {
     margin-right: 0.25rem;
+    position: relative;
 }
 
-.filter__gender > .gender__checkbox ~ .gender__checkbox {
+.gender__checkbox:checked:before {
+    content: '✔';
+    position: absolute;
+}
+
+.gender__checkbox ~ .gender__checkbox {
     margin-left: 1rem;
 }
 
