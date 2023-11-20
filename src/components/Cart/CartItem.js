@@ -15,7 +15,7 @@ function CartItem({ id, name, image, price, quantity, size, handleChange, handle
                 <label htmlFor="quantity">Quantity: &nbsp;</label>
                 <input type="number" onKeyDown={e => e.preventDefault()} id="quantity" value={quantity} name="quantity" min="1" max="10" onChange={e => handleChange(id, size, e)} />
             </div>
-            <button className="btn" onClick={e => handleRemove(id, size)}>Remove Item</button>
+            <button className="btn remove" onClick={e => handleRemove(id, size)}>Remove Item</button>
         </section>
     );
 }

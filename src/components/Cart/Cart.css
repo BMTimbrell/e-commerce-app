@@ -52,6 +52,14 @@
     margin-top: 0.5rem;
 }
 
+.remove {
+    background-color: hsl(0, 80%, 50%);
+}
+
+.remove:hover {
+    background-color: hsl(0, 80%, 70%);
+}
+
 @media (max-width: 23.75em) {
     .cart__page__heading {
         font-size: 2rem;

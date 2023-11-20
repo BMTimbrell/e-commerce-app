@@ -12,14 +12,17 @@ const stripePromise = loadStripe(process.env.REACT_APP_KEY);
 function Checkout() {
     const [cart, setCart] = useState(null);
     const [success, setSuccess] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
+        setIsLoading(true);
         if (sessionStorage.getItem('id')) {
             async function getUser() {
                 const result = await fetchUser(sessionStorage.getItem('id'));
                 if (result) {
                     setCart(await fetchCart());
+                    setIsLoading(false);
                 } else {
                     navigate('/logout');
                 }   
@@ -36,20 +39,22 @@ function Checkout() {
 
     if (success) {
         return (
-            <div style={{textAlign: 'center'}}>
+            <>
                 <h1 style={{textAlign: 'center', marginTop: '2rem', marginBottom: '1rem'}}>Payment Successful!</h1>
-                <Link className="link" to="/products">Continue shopping</Link>
-            </div>
+                <Link style={{textAlign: 'center'}} className="link" to="/products">Continue shopping</Link>
+            </>
         );
     }
 
+    if (isLoading) return <h1 style={{textAlign: 'center', marginTop: '2rem'}}>Loading...</h1>
+
     if (!cart || !cart.products.length) {
         return (
-            <div>
+            <>
                 <p style={{textAlign: 'center', marginTop: '2rem', fontSize: '1.2rem'}}>
                     Cart is empty. <Link className="link" to="/products">Add items to cart.</Link>
                 </p>
-            </div>
+            </>
         );
     }
     return (

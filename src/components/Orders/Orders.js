@@ -27,19 +27,19 @@ function Orders() {
 
     //Check user is logged in, and if so, fetch orders
     useEffect(() => {
+        setIsLoading(true);
         if (sessionStorage.getItem('id')) {
             async function getUser() {
-                setIsLoading(true);
                 const result = await fetchUser(sessionStorage.getItem('id'));
                 if (result) {
                     formatOrders(await fetchOrders());
+                    setIsLoading(false);
                 } else {
                     navigate('/logout');
                 }   
             } 
 
             getUser();
-            setIsLoading(false);
         } else {
             navigate('/login');
         }

@@ -25,9 +25,9 @@
 .order__items {
     display: flex;
     flex-wrap: wrap;
-    column-gap: 0.5rem;
+    column-gap: 2rem;
     row-gap: 2rem;
-    justify-content: center;
+    justify-content: space-around;
     padding: 1rem;
 }
 
@@ -41,7 +41,7 @@
     padding: 0.5rem 0.25rem;
 }
 
-.order__item > img {
+.order__item img {
     display: block;
     overflow: hidden;
     object-fit: cover;
@@ -52,6 +52,7 @@
 }
 
 .order__item__heading {
+    text-align: center;
     margin-bottom: 1rem;
 }
 
