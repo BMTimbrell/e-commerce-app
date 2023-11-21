@@ -14,7 +14,7 @@ export const loginUser = async (email, password) => {
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json",
-                "Access-Control-Allow-Origin": "https://app.netlify.com"
+                "Access-Control-Allow-Origin": "https://splendid-shoes.netlify.app"
             }
         });
 
@@ -57,7 +57,7 @@ export const registerUser = async (firstName, lastName, email, password) => {
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json",
-                "Access-Control-Allow-Origin": "https://app.netlify.com"
+                "Access-Control-Allow-Origin": "https://splendid-shoes.netlify.app"
             }
         });
 
@@ -80,7 +80,7 @@ export const fetchUser = async id => {
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json",
-                "Access-Control-Allow-Origin": "https://app.netlify.com"
+                "Access-Control-Allow-Origin": "https://splendid-shoes.netlify.app"
             }
         });
         
@@ -105,7 +105,7 @@ export const updateUser = async (id, { firstName, lastName, email, password }) =
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json",
-                "Access-Control-Allow-Origin": "https://app.netlify.com"
+                "Access-Control-Allow-Origin": "https://splendid-shoes.netlify.app"
             }
         });
         console.log(response);
@@ -137,7 +137,7 @@ export const fetchProducts = async (category, gender) => {
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json",
-                "Access-Control-Allow-Origin": "https://app.netlify.com"
+                "Access-Control-Allow-Origin": "https://splendid-shoes.netlify.app"
             }
         });
 
@@ -159,7 +159,7 @@ export const fetchProductById = async (id) => {
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json",
-                "Access-Control-Allow-Origin": "https://app.netlify.com"
+                "Access-Control-Allow-Origin": "https://splendid-shoes.netlify.app"
             }
         });
 
@@ -181,7 +181,7 @@ export const fetchCategories = async () => {
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json",
-                "Access-Control-Allow-Origin": "https://app.netlify.com"
+                "Access-Control-Allow-Origin": "https://splendid-shoes.netlify.app"
             }
         });
 
@@ -201,7 +201,7 @@ export const fetchCart = async () => {
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json",
-                "Access-Control-Allow-Origin": "https://app.netlify.com"
+                "Access-Control-Allow-Origin": "https://splendid-shoes.netlify.app"
             }
         });
 
@@ -226,7 +226,7 @@ export const createCart = async (products) => {
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json",
-                "Access-Control-Allow-Origin": "https://app.netlify.com"
+                "Access-Control-Allow-Origin": "https://splendid-shoes.netlify.app"
             }
         });
         const cart = await response.json();
@@ -251,7 +251,7 @@ export const addItemToCart = async (id, price, size, name, image) => {
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json",
-                "Access-Control-Allow-Origin": "https://app.netlify.com"
+                "Access-Control-Allow-Origin": "https://splendid-shoes.netlify.app"
             }
         });
 
@@ -277,7 +277,7 @@ export const makePayment = async (id, amount) => {
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json",
-                "Access-Control-Allow-Origin": "https://app.netlify.com",
+                "Access-Control-Allow-Origin": "https://splendid-shoes.netlify.app",
             }
         });
 
@@ -299,7 +299,7 @@ export const fetchOrders = async () => {
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json",
-                "Access-Control-Allow-Origin": "https://app.netlify.com",
+                "Access-Control-Allow-Origin": "https://splendid-shoes.netlify.app",
             }
         });
 
@@ -319,7 +319,7 @@ export const fetchOrderById = async id => {
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json",
-                "Access-Control-Allow-Origin": "https://app.netlify.com",
+                "Access-Control-Allow-Origin": "https://splendid-shoes.netlify.app",
             }
         });
 
