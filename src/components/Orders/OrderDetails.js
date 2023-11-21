@@ -30,7 +30,7 @@ function OrderDetails() {
         }
     }, [navigate, id]);
 
-    if (isLoading) return <p style={{textAlign: 'center', fontWeight: 'bold'}}>Loading...</p>;
+    if (isLoading) return <h1 style={{textAlign: 'center', marginTop: '2rem'}}>Loading...</h1>;
 
     if (order && order.length)
         return (
