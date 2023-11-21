@@ -1,4 +1,4 @@
-const baseUrl = 'https://splendid-shoes.fly.dev';
+const baseUrl = 'https://splendid-shoes.onrender.com';
 
 //Logging in and registering
 
