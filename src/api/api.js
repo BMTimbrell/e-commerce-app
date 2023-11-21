@@ -14,7 +14,7 @@ export const loginUser = async (email, password) => {
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json",
-                "Access-Control-Allow-Origin": "https://bmtimbrell.github.io"
+                "Access-Control-Allow-Origin": "https://splendid-shoes-app.onrender.com"
             }
         });
 
@@ -57,7 +57,7 @@ export const registerUser = async (firstName, lastName, email, password) => {
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json",
-                "Access-Control-Allow-Origin": "https://bmtimbrell.github.io"
+                "Access-Control-Allow-Origin": "https://splendid-shoes-app.onrender.com"
             }
         });
 
@@ -80,7 +80,7 @@ export const fetchUser = async id => {
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json",
-                "Access-Control-Allow-Origin": "https://bmtimbrell.github.io"
+                "Access-Control-Allow-Origin": "https://splendid-shoes-app.onrender.com"
             }
         });
         
@@ -105,7 +105,7 @@ export const updateUser = async (id, { firstName, lastName, email, password }) =
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json",
-                "Access-Control-Allow-Origin": "https://bmtimbrell.github.io"
+                "Access-Control-Allow-Origin": "https://splendid-shoes-app.onrender.com"
             }
         });
         console.log(response);
@@ -137,7 +137,7 @@ export const fetchProducts = async (category, gender) => {
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json",
-                "Access-Control-Allow-Origin": "https://bmtimbrell.github.io"
+                "Access-Control-Allow-Origin": "https://splendid-shoes-app.onrender.com"
             }
         });
 
@@ -159,7 +159,7 @@ export const fetchProductById = async (id) => {
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json",
-                "Access-Control-Allow-Origin": "https://bmtimbrell.github.io"
+                "Access-Control-Allow-Origin": "https://splendid-shoes-app.onrender.com"
             }
         });
 
@@ -181,7 +181,7 @@ export const fetchCategories = async () => {
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json",
-                "Access-Control-Allow-Origin": "https://bmtimbrell.github.io"
+                "Access-Control-Allow-Origin": "https://splendid-shoes-app.onrender.com"
             }
         });
 
@@ -201,7 +201,7 @@ export const fetchCart = async () => {
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json",
-                "Access-Control-Allow-Origin": "https://bmtimbrell.github.io"
+                "Access-Control-Allow-Origin": "https://splendid-shoes-app.onrender.com"
             }
         });
 
@@ -226,7 +226,7 @@ export const createCart = async (products) => {
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json",
-                "Access-Control-Allow-Origin": "https://bmtimbrell.github.io"
+                "Access-Control-Allow-Origin": "https://splendid-shoes-app.onrender.com"
             }
         });
         const cart = await response.json();
@@ -251,7 +251,7 @@ export const addItemToCart = async (id, price, size, name, image) => {
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json",
-                "Access-Control-Allow-Origin": "https://bmtimbrell.github.io"
+                "Access-Control-Allow-Origin": "https://splendid-shoes-app.onrender.com"
             }
         });
 
@@ -277,7 +277,7 @@ export const makePayment = async (id, amount) => {
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json",
-                "Access-Control-Allow-Origin": "https://bmtimbrell.github.io",
+                "Access-Control-Allow-Origin": "https://splendid-shoes-app.onrender.com",
             }
         });
 
@@ -299,7 +299,7 @@ export const fetchOrders = async () => {
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json",
-                "Access-Control-Allow-Origin": "https://bmtimbrell.github.io",
+                "Access-Control-Allow-Origin": "https://splendid-shoes-app.onrender.com",
             }
         });
 
@@ -319,7 +319,7 @@ export const fetchOrderById = async id => {
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json",
-                "Access-Control-Allow-Origin": "https://bmtimbrell.github.io",
+                "Access-Control-Allow-Origin": "https://splendid-shoes-app.onrender.com",
             }
         });
 
