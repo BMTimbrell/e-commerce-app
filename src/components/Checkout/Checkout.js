@@ -39,22 +39,22 @@ function Checkout() {
 
     if (success) {
         return (
-            <>
-                <h1 style={{textAlign: 'center', marginTop: '2rem', marginBottom: '1rem'}}>Payment Successful!</h1>
-                <Link style={{textAlign: 'center'}} className="link" to="/products">Continue shopping</Link>
-            </>
+            <main style={{textAlign: 'center'}}>
+                <h1 style={{marginTop: '2rem', marginBottom: '1rem'}}>Payment Successful!</h1>
+                <Link className="link" to="/products">Continue shopping</Link>
+            </main>
         );
     }
 
-    if (isLoading) return <h1 style={{textAlign: 'center', marginTop: '2rem'}}>Loading...</h1>
+    if (isLoading) return <h1 style={{textAlign: 'center', marginTop: '2rem'}}>Loading...</h1>;
 
     if (!cart || !cart.products.length) {
         return (
-            <>
+            <main>
                 <p style={{textAlign: 'center', marginTop: '2rem', fontSize: '1.2rem'}}>
                     Cart is empty. <Link className="link" to="/products">Add items to cart.</Link>
                 </p>
-            </>
+            </main>
         );
     }
     return (
