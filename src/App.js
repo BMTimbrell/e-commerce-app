@@ -15,7 +15,7 @@ import OrderDetails from './components/Orders/OrderDetails';
 
 function App() {
   return (
-    <BrowserRouter basename={`/${process.env.PUBLIC_URL}`}>
+    <BrowserRouter>
       <Routes>
         <Route path="/" element={<Root />}>
           <Route index element={<Home/>} />
