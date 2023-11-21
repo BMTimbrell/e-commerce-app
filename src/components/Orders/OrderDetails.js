@@ -63,7 +63,7 @@ function OrderDetails() {
         );
         
         return (
-            <main>
+            <main style={{textAlign: 'center'}}>
                 <h1>Order Details</h1>
                 <p>Couldn't find order</p>
             </main>
