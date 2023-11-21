@@ -13,8 +13,7 @@ export const loginUser = async (email, password) => {
             }),
             headers: {
                 "Content-Type": "application/json",
-                "Accept": "application/json",
-                "Access-Control-Allow-Origin": "https://splendid-shoes-app.onrender.com"
+                "Accept": "application/json"
             }
         });
 
@@ -56,8 +55,7 @@ export const registerUser = async (firstName, lastName, email, password) => {
             }),
             headers: {
                 "Content-Type": "application/json",
-                "Accept": "application/json",
-                "Access-Control-Allow-Origin": "https://splendid-shoes-app.onrender.com"
+                "Accept": "application/json"
             }
         });
 
@@ -79,8 +77,7 @@ export const fetchUser = async id => {
             credentials: "include",
             headers: {
                 "Content-Type": "application/json",
-                "Accept": "application/json",
-                "Access-Control-Allow-Origin": "https://splendid-shoes-app.onrender.com"
+                "Accept": "application/json"
             }
         });
         
@@ -104,8 +101,7 @@ export const updateUser = async (id, { firstName, lastName, email, password }) =
             }),
             headers: {
                 "Content-Type": "application/json",
-                "Accept": "application/json",
-                "Access-Control-Allow-Origin": "https://splendid-shoes-app.onrender.com"
+                "Accept": "application/json"
             }
         });
         console.log(response);
@@ -136,8 +132,7 @@ export const fetchProducts = async (category, gender) => {
             credentials: "include",
             headers: {
                 "Content-Type": "application/json",
-                "Accept": "application/json",
-                "Access-Control-Allow-Origin": "https://splendid-shoes-app.onrender.com"
+                "Accept": "application/json"
             }
         });
 
@@ -158,8 +153,7 @@ export const fetchProductById = async (id) => {
             credentials: "include",
             headers: {
                 "Content-Type": "application/json",
-                "Accept": "application/json",
-                "Access-Control-Allow-Origin": "https://splendid-shoes-app.onrender.com"
+                "Accept": "application/json"
             }
         });
 
@@ -180,8 +174,7 @@ export const fetchCategories = async () => {
             credentials: "include",
             headers: {
                 "Content-Type": "application/json",
-                "Accept": "application/json",
-                "Access-Control-Allow-Origin": "https://splendid-shoes-app.onrender.com"
+                "Accept": "application/json"
             }
         });
 
@@ -200,8 +193,7 @@ export const fetchCart = async () => {
             credentials: "include",
             headers: {
                 "Content-Type": "application/json",
-                "Accept": "application/json",
-                "Access-Control-Allow-Origin": "https://splendid-shoes-app.onrender.com"
+                "Accept": "application/json"
             }
         });
 
@@ -225,8 +217,7 @@ export const createCart = async (products) => {
             body: JSON.stringify(products),
             headers: {
                 "Content-Type": "application/json",
-                "Accept": "application/json",
-                "Access-Control-Allow-Origin": "https://splendid-shoes-app.onrender.com"
+                "Accept": "application/json"
             }
         });
         const cart = await response.json();
@@ -250,8 +241,7 @@ export const addItemToCart = async (id, price, size, name, image) => {
             }),
             headers: {
                 "Content-Type": "application/json",
-                "Accept": "application/json",
-                "Access-Control-Allow-Origin": "https://splendid-shoes-app.onrender.com"
+                "Accept": "application/json"
             }
         });
 
@@ -276,8 +266,7 @@ export const makePayment = async (id, amount) => {
             }),
             headers: {
                 "Content-Type": "application/json",
-                "Accept": "application/json",
-                "Access-Control-Allow-Origin": "https://splendid-shoes-app.onrender.com",
+                "Accept": "application/json"
             }
         });
 
@@ -298,8 +287,7 @@ export const fetchOrders = async () => {
             credentials: "include",
             headers: {
                 "Content-Type": "application/json",
-                "Accept": "application/json",
-                "Access-Control-Allow-Origin": "https://splendid-shoes-app.onrender.com",
+                "Accept": "application/json"
             }
         });
 
@@ -318,8 +306,7 @@ export const fetchOrderById = async id => {
             credentials: "include",
             headers: {
                 "Content-Type": "application/json",
-                "Accept": "application/json",
-                "Access-Control-Allow-Origin": "https://splendid-shoes-app.onrender.com",
+                "Accept": "application/json"
             }
         });
 
