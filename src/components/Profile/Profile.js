@@ -57,6 +57,12 @@ function Profile() {
             return;
         }
 
+        setFormData({
+            firstName: '',
+            lastName: '',
+            email: '',
+            password: ''
+        });
         setIsEditing(false);
     };
 
