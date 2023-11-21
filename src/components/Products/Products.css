@@ -73,11 +73,6 @@
     position: relative;
 }
 
-.gender__checkbox:checked:before {
-    content: '✔';
-    position: absolute;
-}
-
 .gender__checkbox ~ .gender__checkbox {
     margin-left: 1rem;
 }
