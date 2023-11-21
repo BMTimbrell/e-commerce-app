@@ -8,15 +8,17 @@ function OrderDetails() {
     const [order, setOrder] = useState([]);
     const { id } = useParams();
     const navigate = useNavigate();
-    const [isLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
     //Check user is logged in, and if so, fetch order
     useEffect(() => {
+        setIsLoading(true);
         if (sessionStorage.getItem('id')) {
             async function getUser() {
                 const result = await fetchUser(sessionStorage.getItem('id'));
                 if (result) {
                     setOrder(await fetchOrderById(id));
+                    setIsLoading(false);
                 } else {
                     navigate('/logout');
                 }   
