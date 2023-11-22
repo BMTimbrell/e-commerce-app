@@ -12,7 +12,7 @@ by [clicking this link.](https://splendid-shoes-app.onrender.com "Splendid Shoes
 
 ## Features
 
-* Basic User registration and login
+* Basic user registration and login
 * Ability to filter shoes based on category and target gender using search params stored in URL
 * Ability to add items to a shopping cart that persists accross session, as well as edit quantity/remove items
 * Can select a size for shoes
