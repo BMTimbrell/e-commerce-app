@@ -17,5 +17,5 @@ by [clicking this link.](https://splendid-shoes-app.onrender.com "Splendid Shoes
 * Ability to add items to a shopping cart that persists accross session, as well as edit quantity/remove items
 * Can select a size for shoes
 * Can submit a payment in checkout
-* Ability to edit user profile
+* Ability to edit user details (such as name, email and password) on profile page
 * Can view past orders and see information such as total cost and order date
