@@ -42,11 +42,7 @@
 }
 
 .addCartBtn:hover, .sizeDropdown:hover {
-    background-color: hsl(200, 50%, 70%);
-}
-
-.sizeDropdown:hover {
-    color: hsl(200, 50%, 20%);
+    background-color: hsl(200, 50%, 60%);
 }
 
 .sizeDropdown {

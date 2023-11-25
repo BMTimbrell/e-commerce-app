@@ -33,13 +33,11 @@
 }
 
 .btn:hover {
-    background-color: hsl(200, 50%, 70%);
-    color: hsl(200, 50%, 20%)
+    background-color: hsl(200, 50%, 60%);
 }
 
 .btn:disabled {
-    background-color: hsl(200, 50%, 70%, 0.5);
-    color: hsl(200, 50%, 20%, 0.5);
+    background-color: hsl(200, 50%, 60%, 0.5);
     cursor: default;
 }
 
