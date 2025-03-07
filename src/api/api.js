@@ -1,4 +1,4 @@
-const baseUrl = 'https://splendid-shoes.onrender.com';
+const baseUrl = '/api';
 
 //Logging in and registering
 
